@@ -1,0 +1,745 @@
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+
+
+label.error 
+{
+    font-size: 10px !important;
+    margin-top: -10px;
+    font-style: italic;
+    color: #AAA;
+}
+
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection declarations have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Chrome Frame prompt
+   ========================================================================== */
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   Theses examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+
+h1, h2, h3, h4, h5, h6
+{
+    font-family: "STYMIEXB", "Times New Roman", Serif !important;
+    font-weight: normal !important;
+}
+
+
+@font-face{
+    font-family: "STYMIEXB";
+    src: url(fonts/STYMIEXB.eot);
+    src: url(fonts/STYMIEXB.ttf) format("truetype");
+}
+
+
+
+
+.animado-02-in-out
+{
+    -webkit-transition: 0.2s all ease-in-out;
+    -moz-transition: 0.2s all ease-in-out;
+    -o-transition: 0.2s all ease-in-out;
+    -ms-transition: 0.2s all ease-in-out;
+    transition: 0.2s all ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+
+
+body
+{
+    background: url(img/trilha-banner.jpg) no-repeat fixed top right;
+}
+
+body #trilha #header
+{
+    background: white;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+}
+
+#trilha h1,
+#trilha h2
+{
+    color: #ba8b4a;
+    font-size: 25px;
+    margin-top: 0;
+}
+
+#trilha h2
+{
+    font-size: 20px;
+}
+
+#trilha p
+{
+    font-size: 13px;
+    color: #666666;
+}
+
+#trilha #header #menu
+{
+    height: 79px;
+    font-family: "STYMIEXB", "Times New Roman", Serif !important;
+    font-size: 14px;
+}
+
+#trilha #header #menu #logo
+{
+    float: left;
+    text-indent: -9995px;
+    width: 119px;
+    height: 60px;
+    background: url(img/trilha-logo.jpg);
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#trilha #header #menu nav
+{
+}
+
+#trilha #header #menu nav > ul
+{
+    float: right;
+    margin: 0;
+    margin-top: 27px;
+}
+
+#trilha #header #menu nav ul #hi
+{
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+
+#trilha #header #menu nav .nav li
+{
+    display: inline-block;
+    float: left;
+}
+
+#trilha #header #menu nav .nav ul
+{
+    margin-top: 0;
+}
+
+#trilha #header #menu nav .nav li.dropdown:after
+{
+    width: 0;
+    height: 0;
+    content: '';
+    display: block;
+    float: right;
+    position: relative;
+    left: -10px;
+    top: -2px;
+    margin-top: -8px;
+    margin-right: -8px;
+    border: 4px solid #b88b4f;
+    border-top-color: transparent;
+    border-left-color: transparent;
+}
+
+#trilha #header #menu nav ul li a
+{
+    color: #848484;
+    text-decoration: none;
+    display: inline-block;
+    padding: 20px 25px 13px 25px;
+}
+
+#trilha #header #menu nav ul .dropdown-menu li a
+{
+    width: 65px;
+}
+
+#trilha #header #menu nav ul .dropdown-menu li a:hover
+{
+    color: white;
+}
+
+#trilha #header #menu nav ul li:hover
+{
+    background: url(img/trilha-sombra-menu-hover.jpg) no-repeat;
+    background-size: 100% 53px;
+}
+
+
+
+
+#trilha #banner
+{
+    height: 455px;
+}
+
+
+
+#trilha #bg-topo
+{
+    background: url(img/trilha-bg-dourado.jpg);
+    border-top: 1px solid #c19652;
+    height: 20px;
+    margin-top: -1px;
+}
+
+#trilha #bg-sombra-topo
+{
+    background: url(img/trilha-sombra-superior.jpg);
+    height: 10px;
+}
+
+
+
+
+#trilha #wrap-home
+{
+    padding-top: 75px;
+    padding-bottom: 175px;
+    background: white;
+}
+
+#trilha #wrap-home img
+{
+    margin: 20px 0 0 0px;
+}
+
+#trilha #wrap-home #atalho
+{
+    margin-bottom: 40px;
+}
+
+#trilha #wrap-home #atalho a
+{
+    background: #00538c;
+    color: white;
+    padding: 5px 20px 5px 10px;
+    display: inline-block;
+}
+
+#trilha #wrap-home #atalho a i
+{
+    margin-right: 5px;
+}
+
+
+
+#trilha #bg-sombra-base
+{
+    background: url(img/trilha-sombra-inferior.jpg);
+    height: 10px;
+}
+
+#trilha #bg-base
+{
+    background: url(img/trilha-bg-dourado.jpg);
+    height: 65px;
+    width: 100%;
+    border-bottom: 1px solid #c19652;
+    margin-bottom: -1px;
+    text-align: center;
+    font-size: 11px;
+    display: table;
+}
+
+#trilha #bg-base p
+{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: #ffffff;
+    padding: 0 20px;
+}
+
+#trilha #bg-base span
+{
+    color: #ffebcc;
+}
+
+
+
+
+/*==============================SOBRE TRILHA / HI ==============================*/
+
+#trilha #wrap-trilha,
+#trilha #wrap-hi,
+#trilha #wrap-contato
+{
+    padding-top: 50px;
+    padding-bottom: 150px;
+    background: white;
+}
+
+#trilha #wrap-trilha h1,
+#trilha #wrap-hi h1
+{
+    margin-bottom: 70px;
+}
+
+#trilha #wrap-trilha p,
+#trilha #wrap-hi p
+{
+    margin-bottom: 20px;
+}
+
+#trilha #wrap-trilha img
+{
+    margin-top: 79px;
+}
+
+/*==============================FIM SOBRE TRILHA==============================*/
+
+
+
+
+/*==============================SOBRE HI==============================*/
+#trilha #wrap-hi h2
+{
+    text-align: center;
+    line-height: 25px;
+    margin-bottom: 50px;
+}
+
+#trilha #placar
+{
+    background: url(img/trilha-bg-placar.jpg);
+    padding: 0 0 20px 0;
+}
+
+#trilha #placar canvas
+{
+    margin: 40px auto 0;
+    display: block;
+}
+
+#trilha #placar h3
+{
+    text-align: center;
+    color: #b88b4f;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: -2px;
+}
+
+#trilha #placar p
+{
+    line-height: 8px;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+}
+
+#trilha #placar p span
+{
+    color: #a17740;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/*==============================FIM HI==============================*/
+
+
+
+
+
+/*==============================CONTATO==============================*/
+#trilha #contato
+{
+    padding-top: 50px;
+    background: white;
+}
+
+#trilha #contato h1
+{
+    margin-bottom: 0;
+}
+
+#trilha #wrap-contato
+{
+    margin-top: 60px;
+}
+
+#trilha #wrap-contato p
+{
+    margin-bottom: 15px;
+}
+
+#trilha #wrap-contato span
+{
+    color: #a87e3b;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+
+#trilha #wrap-contato form
+{
+    float: right;
+    text-align: right;
+    color: #999999;
+}
+
+#trilha #contato #wrap-contato #formulario
+{
+    height: 390px;
+    position: relative;
+}
+
+#trilha #contato #wrap-contato #formulario .alert
+{
+    text-align: right;
+    display: none;
+}
+
+#trilha #wrap-contato img
+{
+    position: absolute;
+    top: -55px;
+    right: 0;
+    z-index: 100;
+}
+
+#trilha #wrap-contato form label
+{
+    font-weight: bold;
+    font-size: 13px;
+    padding-right: 10px;
+}
+
+#trilha #wrap-contato form input,
+#trilha #wrap-contato form textarea
+{
+    height: 30px;
+    background: #a87e3b;
+    border: none;
+    color: white;
+    border-radius: 3px 0 0 3px;
+}
+
+#trilha #wrap-contato form #input-nome
+{
+    width: 138px;
+}
+#trilha #wrap-contato form #input-email
+{
+    width: 221px;
+}
+
+#trilha #wrap-contato form #input-mensagem
+{
+    width: 303px;
+    height: 110px;
+    resize: none;
+}
+
+#trilha #wrap-contato form input[type="submit"]
+{
+    width: 82px;
+    height: 30px;
+    background: #00548e;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 3px 0 0 3px;
+}

@@ -1,0 +1,16 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    <Raul Vinicius> -- <Backend / Frontend> -- <#raul_vinicius>
+    <Raissa Costa> -- <Frontend> -- <>
+
+# THANKS
+
+    <Carlos Francischetti>
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    Normalize.css, jQuery, Modernizr
