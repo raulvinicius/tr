@@ -351,6 +351,11 @@ body
     background: url(img/trilha-banner.jpg) no-repeat fixed top right;
 }
 
+body#body-loja
+{
+    background: none;
+}
+
 body #trilha #header
 {
     background: white;

@@ -21,7 +21,10 @@
         <script src="<?php bloginfo('template_url') ?>/js/vendor/modernizr-2.6.2.min.js"></script>
 
     </head>
-    <body>
+
+    <?php $urlLoja = strpos($_SERVER["REQUEST_URI"], "/loja"); ?>
+
+    <body <?php echo ($urlLoja) ? "id=\"body-loja\"" : ""; ?> >
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
@@ -33,6 +36,8 @@
         <div id="trilha">
 
 <!-- ================HEADER================ -->
+
+
             <header id="header" class="container-fluid">
                 <div  id="menu" class="container">
                     <div class="row-fluid">
@@ -61,7 +66,12 @@
                 </div>
             </header>
 
-            <div id="banner"></div>
-            <div  id="bg-topo"></div>
-            <div  id="bg-sombra-topo"></div>
+
+            <?php if ( !$urlLoja ) : ?>
+
+                <div id="banner"></div>
+                <div  id="bg-topo"></div>
+                <div  id="bg-sombra-topo"></div>
+
+            <?php endif; ?>
 <!-- ================FIM HEADER================ -->
