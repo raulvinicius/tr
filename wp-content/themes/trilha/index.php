@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header() ?>
 
 <!-- ================HOME================ -->
         <section>
@@ -19,7 +19,6 @@
                                 </section>
                             </div>
                         </div>
-
 
                         <div id="ab-hi">
                             <div class="span1 offset1">
