@@ -324,6 +324,11 @@ h1, h2, h3, h4, h5, h6
     src: url(fonts/STYMIEXB.ttf) format("truetype");
 }
 
+@font-face{
+    font-family: "covered";
+    src: url(fonts/Covered_By_Your_Grace.ttf) format("truetype");
+}
+
 
 
 
@@ -748,3 +753,203 @@ body #trilha #header
     font-weight: bold;
     border-radius: 3px 0 0 3px;
 }
+
+
+/*===============================HOME LOJA===============================*/
+
+/*==============================LOJA=============================*/
+
+.font22
+{
+    font-size: 22px;
+}
+
+#header-loja
+{
+    background: url(img/trilha-bg-header-loja.jpg) center no-repeat;
+    background-size: 100% 123px;
+    height: 43px;
+    border-bottom: 1px solid #003466;
+    padding-top: 80px;
+    color: white;
+    line-height: 43px;
+    font-style: italic;
+}
+
+#header-loja form
+{
+    float: left;
+    width: 77%;
+    margin-bottom: 0;
+}
+
+#header-loja form label
+{
+    margin-left: 22px;
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+#header-loja form #label-login
+{
+    margin-left: 31px;
+}
+
+
+#header-loja form input
+{
+    color: #004990;
+    font-style: italic;
+}
+
+#header-loja form input[type="text"],
+#header-loja form input[type="password"]
+{
+    height: 15px;
+    width: 21.2%;
+    font-size: 12px;
+}
+
+#header-loja form input[type="submit"]
+{
+    background: url(img/trilha-seta-login.png) no-repeat center;
+    border: none;
+    text-indent: -9999px;
+    padding: 5px 15px;
+}
+
+
+#header-loja #cadastrar
+{
+    height: 43px;
+    width: 20.7%;
+    margin-left: 2%;
+    float: left;
+    text-decoration: none;
+    background: #004282;
+    border-right: 1px solid #002b56;
+}
+
+
+#header-loja a p img
+{   
+    margin-right: 10px;
+    margin-bottom: 4px;
+}
+
+#header-loja a p
+{
+    color: white;
+    text-align: center;
+}
+
+#header-loja #carrinho-fechado
+{
+    background: #004990;
+    margin-left: 0;
+    height: 43px;
+}
+
+#header-loja #carrinho-fechado #icon-carrinho
+{
+    padding-left: 2.564102564102564%;
+    text-align: right;
+    border-left: 1px solid #006690;
+}
+
+#header-loja #carrinho-fechado #texto-carrinho
+{
+    text-align: center;
+}
+
+#header-loja #carrinho-fechado #texto-carrinho p
+{
+    font-family: "covered", cursive;
+    color: #aacae9;
+    font-size: 18px;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+
+#header-loja #carrinho-fechado #texto-carrinho span
+{
+    color: white;
+}
+
+#header-loja #carrinho-fechado #icon-seta-carrinho
+{
+    border-right: 1px solid #006290;
+}
+
+
+
+#header-loja #icons-header
+{
+    margin-left: 0;
+    width: 10.6%;
+    text-align: right;
+    border-left: 1px solid #000875;
+}
+
+#header-loja #icons-header img
+{
+    display: inline-block;
+}
+
+#header-loja #icons-header #icon-face
+{
+    margin-right: 6.564103%;
+}
+
+/*======================================================*/
+
+
+#categorias
+{
+    height: 148px;
+    background: url(img/trilha-bg-categorias.jpg);
+    font-family: "covered", cursive;
+}
+
+#categorias ul
+{
+    height: 148px;
+    text-align: center;
+    list-style: none;
+}
+
+#categorias ul li
+{
+    width: 16.2%;
+    height: 128px;
+    background: #2475c4;
+    margin-left: 0.564103%;
+    display: inline-block;
+    border-radius: 2px;
+    box-shadow: 0 0 10px #98a7cb;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+#categorias a
+{
+    width: 100%;
+    height: 128px;
+    line-height: 50px;
+    display: block;
+    float: left;
+    text-decoration: none;
+}
+
+#categorias a img
+{
+    padding-top: 31px;
+}
+
+#categorias a p
+{
+    color: white;
+    font-size: 22px;
+}
+
+/*==============================FIM HEADER LOJA=============================*/
