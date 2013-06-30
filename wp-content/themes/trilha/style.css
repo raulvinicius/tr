@@ -748,3 +748,12 @@ body #trilha #header
     font-weight: bold;
     border-radius: 3px 0 0 3px;
 }
+
+
+/*===============================HOME LOJA===============================*/
+
+#header-loja
+{
+    height: 43px;
+    margin-bottom: 1px solid #003466;
+}
