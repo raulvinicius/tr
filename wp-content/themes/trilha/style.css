@@ -953,3 +953,145 @@ body #trilha #header
 }
 
 /*==============================FIM HEADER LOJA=============================*/
+
+
+#carousel .item
+{
+    text-align: center;
+}
+
+#carousel #textos-carousel,
+#carousel #imagens-carousel
+{
+    display: inline-block;
+}
+
+#carousel #textos-carousel
+{
+    margin-left: 5%;
+    font-family: "covered", cursive !important;
+    width: 34%;
+}
+
+#carousel #textos-carousel h2
+{
+    font-family: "covered", cursive !important;
+    font-size: 30px;
+    color: #b60000;
+    margin: 8% 0 0 0;
+    text-align: left;
+}
+
+#carousel #textos-carousel #descricao
+{
+    font-family: Arial;
+    font-size: 13px;
+    color: #666666;
+    text-align: left;
+    margin-top: -4px;
+}
+
+#carousel #textos-carousel #preco
+{
+    font-size: 27px;
+    color: #004990;
+    margin-top: 38%;
+    text-align: right;
+}
+#carousel #textos-carousel #preco span
+{
+    font-size: 60px;
+    display: inline-block;
+    vertical-align: -67%;
+}
+
+#carousel #imagens-carousel
+{
+    margin: 16px 9px 10px 0;
+    float: right;
+    width: 59%;
+}
+
+#carousel #imagens-carousel img
+{
+    width: 53.1%;
+}
+
+#carousel #imagens-carousel #img-02
+{
+    width: 35.5%;
+    margin-left: -1%;
+}
+
+
+#bg-marcadores
+{
+    height: 37px;
+    background: #004990;
+    border-bottom: 1px solid #003466;
+}
+
+
+
+#paginacao
+{
+    height: 73px;
+    line-height: 73px;
+    background: url(img/trilha-bg-paginacao.jpg);
+}
+
+#paginacao ul
+{
+    list-style: none;
+    display: inline-block;
+}
+
+#paginacao ul li,
+#paginacao ul a
+{
+    display: inline-block;
+    text-decoration: none;
+    color: #004990;
+    font-size: 12px;
+}
+
+#paginacao ul .anterior,
+#paginacao ul .proxima
+{
+    width: 17px;
+    height: 18px;
+    text-indent: -99999px;
+}
+
+#paginacao ul .anterior
+{
+    background: url(img/trilha-icon-pagina-anterior.png);
+    margin-right: 16px;
+}
+
+#paginacao ul .proxima
+{
+    background: url(img/trilha-icon-proxima-pagina.png);
+    margin-left: 16px;
+}
+
+#paginacao ul .numeracao
+{
+    width: 22px;
+    height: 23px;
+    background: url(img/trilha-icon-numeração-pagina.png) center no-repeat;
+    text-align: center;
+    padding: 8px 5px 5px;
+}
+
+#paginacao #itens-pagina,
+#paginacao #itens-pagina img,
+#paginacao #itens-pagina p,
+#paginacao form
+
+{
+    display: inline-block;
+}
+
+
+
