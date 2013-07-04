@@ -1,44 +1,13 @@
 <?php get_header() ?>
 
 <!-- sections vem aqui -->
-        <section>
-            <div id="carousel" class="fluid-container">
+        <section>   
+
+            <div id="bg-resultado-busca" class="fluid-container">
                 <div class="container">
-                    <div class="row-fluid">
-
-                        <!-- <div id="myCarousel" class="carousel slide"> -->
-                          <!-- Itens de carousel -->
-                            <!-- <div class="carousel-inner"> -->
-                                <div class="item">
-                                    <a href="#">
-                                        <div id="textos-carousel">
-                                            <h2>Camiseta Planeta</h2>
-                                            <p id="descricao">Várias cores</p>
-                                            <p id="preco">R$ <span>23</span>,00</p>
-                                        </div>
-
-                                        <div id="imagens-carousel">
-                                            <img src="<?php bloginfo('template_url') ?>/img/trilha-carousel-loja-01.jpg">
-                                            <img id="img-02" src="<?php bloginfo('template_url') ?>/img/trilha-carousel-loja-02.jpg">
-                                        </div>
-                                    </a>
-                                    
-
-                                </div>
-                            <!-- </div> -->
-
-                          <!-- Navegador do carousel -->
-<!--                           <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-                        </div> -->
-
-                    </div>
-                </div>           
+                    <p class="span12">Exibindo resultados da busca por "<span>Provolone</span>"</p>
+                </div>
             </div>
-            
-            <div id="bg-marcadores" class="fluid-container"></div>
-
-
 
             <?php 
 
@@ -48,9 +17,6 @@
                 include $pUrl . "\paginacao.php";
 
              ?>
-
-
-
 
 
              <section>

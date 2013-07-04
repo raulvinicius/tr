@@ -868,6 +868,7 @@ body #trilha #header
     border-bottom: 1px solid #072868;
     overflow: hidden;
     height: 0;
+    z-index: 200;
 }
 
 #wrap-cart #wrap-titulo-cart
@@ -1075,6 +1076,23 @@ body #trilha #header
 {
     text-decoration: none;
     background-position: center bottom;
+}
+
+#bg-resultado-busca
+{
+    height: 60px !important;
+    line-height: 60px;
+}
+
+#bg-resultado-busca p
+{
+    color: #b8c4d7;
+}
+
+#bg-resultado-busca p span
+{
+    color: white;
+    font-style: italic;
 }
 
 
@@ -1346,7 +1364,8 @@ body #trilha #header
 }
 
 
-#bg-marcadores
+#bg-marcadores,
+#bg-resultado-busca
 {
     height: 37px;
     background: #004990;
