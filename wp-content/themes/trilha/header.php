@@ -69,7 +69,55 @@
                 <?php if ($urlLoja) : ?>
 
 
-                    <div id ="header-loja" class="container-fluid">
+                    <div id="wrap-cart" class="container-fluid animado-02-in-out">
+                        <div id="wrap-titulo-cart" class="row-fluid">
+                            <div class="container">
+                                <i id="icone" class="span1 offset2"></i>
+                                <h2 class="span2">Meu Carrinho</h2>
+                                <p id="display" class="span5"><span class="font22">3</span>  Itens [<span> R$15,00 </span>]</p>
+                                <div class="span1">
+                                    <button id="btn-fechar" title="Continuar Comprando">Fechar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="wrap-produtos-cart" class="row-fluid">
+                            <div id="produtos-cart" class="container">
+                                <div class="row-fluid">
+                                    <ul class="span8 offset2">
+
+                                        <?php for ($i=0; $i < 4; $i++) : ?> 
+
+                                            <li>
+                                                <div id="wrap-remover" class="span1">
+                                                    <button title="Remover produto do carrinho">Remover</button>
+                                                </div>
+                                                <div id="descricao" class="span9">
+                                                    <p><span>Produto</span>Descrição do produto</p>
+                                                </div>
+                                                <p id="preco" class="span2">R$ <span>59</span>,00</p>
+                                            </li>
+
+                                        <?php endfor; ?>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="total" class="row-fluid">
+                            <div class="container">
+                                <div id="fundo" class="span8 offset2">
+                                    <div id="wrap-total" class="span5">
+                                        <p><span id="tag-preco">Total:</span> R$ <span id="preco">179</span>,00</p>
+                                    </div>
+                                    <div id="wrap-btns" class="span7">
+                                        <button id="btn-continuar">Continuar comprando</button>
+                                        <a href="#">Finalizar Compra</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="header-loja" class="container-fluid">
                         <div class="container">
                             <div class="row-fluid">
 
@@ -88,7 +136,7 @@
                                     <a href="#" id="cadastrar"><p><img src="<?php bloginfo('template_url') ?>/img/trilha-seta-cadastre-se.png">Cadastre-se</p></a>
                                 </div>
 
-                                <div id="carrinho-fechado" class="span5">
+                                <div id="carrinho-fechado" class="span5" title="Ver Meu Carrinho">
                                     <div class="row-fluid">
                                         <div id="icon-carrinho" class="span1">
                                             <img src="<?php bloginfo('template_url') ?>/img/trilha-icon-carrinho.png">
