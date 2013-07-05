@@ -636,22 +636,19 @@ body #trilha #header
 #trilha #bg-base
 {
     background: url(img/trilha-bg-dourado.jpg);
-    height: 65px;
-    width: 100%;
+    min-height: 65px;
     border-bottom: 1px solid #c19652;
     margin-bottom: -1px;
     text-align: center;
     font-size: 11px;
-    display: table;
 }
 
 #trilha #bg-base p
 {
-    display: table-cell;
-    vertical-align: middle;
     text-align: center;
     color: #ffffff;
     padding: 0 20px;
+    font-size: 11px;
 }
 
 #trilha #bg-base span
@@ -659,7 +656,61 @@ body #trilha #header
     color: #ffebcc;
 }
 
+#trilha #bg-sombra-base.loja
+{
+    background: url(img/trilha-sombra-inferior-loja.jpg);
+    height: 10px;
+}
 
+#trilha #bg-base.loja
+{
+    background: #002a53;
+    height: auto;
+}
+
+#trilha #bg-base.loja ul
+{
+    list-style-image: url(img/trilha-bullet-menu-footer.jpg);
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+#trilha #bg-base.loja ul li
+{
+    display: inline-block;
+    color: #8d97a5;
+}
+
+#trilha #bg-base.loja ul li:after
+{
+    content: ' ';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: white;
+    display: block;
+    margin-top: -12px;
+    margin-left: -4px;
+}
+
+#trilha #bg-base.loja ul li:first-child:after
+{
+    list-style: none;
+    background: none;
+}
+
+#trilha #bg-base.loja ul li a
+{
+    color: #8d97a5;
+    padding: 10px 20px;
+    margin: 0;
+}
+
+#trilha #bg-base.loja ul li a:hover,
+#trilha #bg-base.loja ul li a:focus
+{
+    color: white;
+}
 
 
 /*==============================SOBRE TRILHA / HI ==============================*/
@@ -1488,7 +1539,8 @@ body #trilha #header
 
 
 
-#lista-produtos
+#lista-produtos,
+.bg-caderno
 {
     background: url(img/trilha-bg-caderno.jpg);
 }
@@ -1511,12 +1563,16 @@ body #trilha #header
     background: white;
 }
 
+.foto-produto
+{
+    overflow: hidden;
+    position: relative;
+}
+
 #lista-produtos ul #produto figure
 {
     width: 220px;
     height: 215px;
-    overflow: hidden;
-    position: relative;
 }
 
 #lista-produtos ul #produto figure #wrap-imgs
@@ -1529,18 +1585,18 @@ body #trilha #header
     margin-left: -220px;
 }
 
-#lista-produtos ul #produto #desconto,
-#lista-produtos ul #produto #carrinho,
-#lista-produtos ul #produto #new
+#lista-produtos ul #produto .foto-produto #desconto,
+#lista-produtos ul #produto .foto-produto #carrinho,
+#lista-produtos ul #produto .foto-produto #new
 {
     display: none;
 }
 
 #lista-produtos ul #produto #foto,
 #lista-produtos ul #produto #zoom,
-#lista-produtos ul #produto #desconto,
-#lista-produtos ul #produto #carrinho,
-#lista-produtos ul #produto #new,
+#lista-produtos ul #produto .foto-produto #desconto,
+#lista-produtos ul #produto .foto-produto #carrinho,
+#lista-produtos ul #produto .foto-produto #new,
 #lista-produtos ul #produto #menu,
 #lista-produtos ul #produto #preco
 {
@@ -1561,7 +1617,7 @@ body #trilha #header
     z-index: 0;
 }
 
-#lista-produtos ul #produto #desconto
+#lista-produtos ul #produto .foto-produto #desconto
 {
     width: 58px;
     height: 58px;
@@ -1570,7 +1626,7 @@ body #trilha #header
     top: 0;
 }
 
-#lista-produtos ul #produto #desconto p
+#lista-produtos ul #produto .foto-produto #desconto p
 {
     color: white;
     font-weight: bold;
@@ -1582,7 +1638,7 @@ body #trilha #header
     margin-left: 2px;
 }
 
-#lista-produtos ul #produto #carrinho
+#lista-produtos ul #produto .foto-produto #carrinho
 {
     width: 42px;
     height: 42px;
@@ -1591,7 +1647,7 @@ body #trilha #header
     top: 0;
 }
 
-#lista-produtos ul #produto #new
+#lista-produtos ul #produto .foto-produto #new
 {
     width: 47px;
     height: 47px;
@@ -1715,3 +1771,74 @@ body #trilha #header
 }
 
 
+
+
+
+#ver-produto .container
+{
+    background: white;
+    box-shadow: 0 0 5px #bbb;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+#ver-produto .foto-produto
+{
+    width: 468px;
+    height: 457px;
+    margin-left: 10px;
+}
+
+#ver-produto .foto-produto ul,
+#ver-produto #miniaturas
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#ver-produto #miniaturas
+{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#ver-produto #miniaturas li
+{
+    margin: 0 16px 0 0;
+    display: inline;
+    width: 100px !important;
+    height: 99px !important;
+    padding: 0;
+}
+
+#ver-produto #compartilhe
+{
+    margin: 50px 0 50px 10px;
+    line-height: 50px;
+    background: #fafafa;
+}
+
+#ver-produto #compartilhe h3
+{
+    float: left;
+    font-family: 'MinionBold', 'Times New Roman', serif !important;
+    color: white;
+    background: #999;
+    font-size: 20px;
+    font-weight: normal;
+    padding: 5px 10px;
+    margin: 0 40px 0 0;
+}
+
+#ver-produto #compartilhe .fb-like
+{
+    height: 25px;
+}
+
+#ver-produto #compartilhe .twitter-share-button
+{
+    vertical-align: middle;
+}

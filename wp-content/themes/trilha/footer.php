@@ -1,8 +1,28 @@
 <!-- ================FOOTER================ -->
             <footer>
-                <div  id="bg-sombra-base"></div>
-                <div  id="bg-base">
-                    <p>© Copyright - Todos os direitos reservados |<span> SHCS CR - Quadra 505 - Bloco C - Entrada 14 </span>| Fone: (61) 3244-2565</p>
+                <?php $urlLoja = strpos($_SERVER["REQUEST_URI"], "/loja"); ?>
+                <div  id="bg-sombra-base" <?php echo ($urlLoja) ? "class=\"loja\"" : ""; ?>></div>
+                <div  id="bg-base" class="container-fluid <?php echo ($urlLoja) ? "loja" : ""; ?>">
+                    <div class="container">
+                        <?php if ($urlLoja) : ?>
+                            <div class="row-fluid">
+                                <nav class="">
+                                    <ul class="span12">
+                                        <li><a href="#">A Loja [hi]</a></li>
+                                        <li><a href="#">Regulamentos</a></li>
+                                        <li><a href="#">Entrega de produtos</a></li>
+                                        <li><a href="#">Fale Conosco</a></li>
+                                        <li><a href="#">F.A.Q.</a></li>
+                                        <li><a href="#">Dúvidas e Sugestões</a></li>
+                                        <li><a href="#">Orçamentos</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        <?php endif; ?>
+                        <div class="row-fluid">
+                            <p class="span12">© Copyright - Todos os direitos reservados |<span> SHCS CR - Quadra 505 - Bloco C - Entrada 14 </span>| Fone: (61) 3244-2565</p>
+                        </div>
+                    </div>
                 </div>
             </footer>
 <!-- ================FIM FOOTER================ -->
