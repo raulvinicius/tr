@@ -8,13 +8,13 @@
                             <div class="row-fluid">
                                 <nav class="">
                                     <ul class="span12">
-                                        <li><a href="#">A Loja [hi]</a></li>
-                                        <li><a href="#">Regulamentos</a></li>
-                                        <li><a href="#">Entrega de produtos</a></li>
-                                        <li><a href="#">Fale Conosco</a></li>
-                                        <li><a href="#">F.A.Q.</a></li>
-                                        <li><a href="#">Dúvidas e Sugestões</a></li>
-                                        <li><a href="#">Orçamentos</a></li>
+                                        <li><a class="animado-02-in-out" href="#">A Loja [hi]</a></li>
+                                        <li><a class="animado-02-in-out" href="#">Regulamentos</a></li>
+                                        <li><a class="animado-02-in-out" href="#">Entrega de produtos</a></li>
+                                        <li><a class="animado-02-in-out" href="#">Fale Conosco</a></li>
+                                        <li><a class="animado-02-in-out" href="#">F.A.Q.</a></li>
+                                        <li><a class="animado-02-in-out" href="#">Dúvidas e Sugestões</a></li>
+                                        <li><a class="animado-02-in-out" href="#">Orçamentos</a></li>
                                     </ul>
                                 </nav>
                             </div>

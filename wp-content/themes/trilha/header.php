@@ -177,15 +177,15 @@
                             <div class="row-fluid">
 
                                 <ul>
-                                    <li>
+                                    <li class="animado-02-in-out">
                                         <a href="#"><img src="<?php bloginfo('template_url') ?>/img/trilha-icon-canecas.png"><p>Canecas</p></a>
                                     </li>
 
-                                    <li>
+                                    <li class="animado-02-in-out">
                                         <a href="#"><img src="<?php bloginfo('template_url') ?>/img/trilha-icon-camisetas.png"><p>Camisetas</p></a>
                                     </li>
 
-                                    <li>
+                                    <li class="animado-02-in-out">
                                         <a href="#"><img src="<?php bloginfo('template_url') ?>/img/trilha-icon-bottons.png"><p>Bottons</p></a>
                                     </li>
                                 </ul>

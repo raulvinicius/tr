@@ -153,6 +153,30 @@ $(document).ready(
 	    	console.log('fecha');
 	    })
 
+	    $('#relacionados #btn-anterior').bind('click', function() 
+	    {
+	    	passarRelacionados('anterior');
+	    })
+
+	    $('#relacionados #btn-proximo').bind('click', function() 
+	    {
+	    	passarRelacionados('proximo');
+	    })
+
+
+
+
+	    $(window).resize(function() {
+
+	    	console.log($(window).width());
+	    	$('#relacionados #lista #produtos').css('margin-left', '0px')
+	    	$('#relacionados #lista #produtos').attr('data-m', '0')
+
+	    })
+
+
+
+
 	}
 
 );
@@ -203,4 +227,36 @@ function fechaCarrinho ()
 		'height': '0px',
     	'box-shadow': 'none'
 	})
+}
+
+function passarRelacionados (direcao) 
+{
+	var wLista = $("#relacionados #lista").width();
+	var wProdutos = parseInt( $('#relacionados #lista #produtos #produto').first().css('margin-left') ) + parseInt( $('#relacionados #lista #produtos #produto').first().css('margin-right') );
+	wProdutos += $('#relacionados #lista #produtos #produto').first().width();
+	wProdutos *= $('#relacionados #lista #produtos #produto').length;
+	var mProdutos = parseInt( $('#relacionados #lista #produtos').attr('data-m') );
+	var mProduto = parseInt( $('#relacionados #lista #produtos #produto').css('margin-right') ) - 10;
+	var deslocamento = wLista + mProduto;
+
+	if(direcao == 'proximo')
+	{
+		$('#relacionados #btn-anterior').removeAttr('disabled', 'disabled');
+		$('#relacionados #lista #produtos').attr('data-m', (mProdutos - deslocamento ));
+		$('#relacionados #lista #produtos').css('margin-left', (mProdutos - deslocamento ) + 'px');
+		if( ( ( $('#relacionados #lista #produtos').attr('data-m') ) < ( wProdutos - wLista ) * -1 ) )
+		{
+			$('#relacionados #btn-proximo').attr('disabled', 'disabled');
+		}
+	}
+	else
+	{
+		$('#relacionados #btn-proximo').removeAttr('disabled', 'disabled');
+		$('#relacionados #lista #produtos').attr('data-m', (mProdutos + deslocamento ));
+		$('#relacionados #lista #produtos').css('margin-left', (mProdutos + deslocamento ) + 'px');
+		if( ( $('#relacionados #lista #produtos').attr('data-m') ) >= 0 )
+		{
+			$('#relacionados #btn-anterior').attr('disabled', 'disabled');
+		}
+	}
 }

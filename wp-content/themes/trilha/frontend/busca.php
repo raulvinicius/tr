@@ -28,12 +28,13 @@
 
                             <?php for ($i=0; $i < 10; $i++) : ?>
 
-                                <li id="produto">
+                                <li id="produto" class="produto">
 
-                                    <figure>
+                                    <figure class="foto-produto">
                                         <div id="wrap-imgs">
-                                            <img id="foto" class="animado-02-in-out" src="<?php bloginfo('template_url') ?>/img/produto01.jpg">
-                                            <img id="zoom" src="<?php bloginfo('template_url') ?>/img/zoom-produto01.jpg">
+                                            <?php $r = rand(1, 4); ?>
+                                            <img id="foto" class="animado-02-in-out" src="<?php bloginfo('template_url') ?>/img/produto0<?php echo $r ?>.jpg">
+                                            <img id="zoom" src="<?php bloginfo('template_url') ?>/img/produto0<?php echo $r ?>-zoom.jpg">
                                         </div>
                                         <div id="desconto">
                                             <p>99%</p>

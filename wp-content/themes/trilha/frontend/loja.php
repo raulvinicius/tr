@@ -62,7 +62,7 @@
 
                             <?php for ($i=0; $i < 10; $i++) : ?>
 
-                                <li id="produto">
+                                <li id="produto" class="produto">
 
                                     <figure class="foto-produto">
                                         <div id="wrap-imgs">
