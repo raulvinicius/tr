@@ -39,22 +39,22 @@
                         <div id="alunos" class="span4">
                             <canvas id="chart-alunos" width="182" height="182"></canvas>
                             <h3>Alunos</h3>
-                            <p><span>Até 2012: </span>15.278</p>
-                            <p><span>Em 2013: </span>9.043</p>
+                            <p><span>Total: </span>26.136</p>
+                            <p><span>Em 2013: </span>10.878</p>
                         </div>
 
                         <div id="escolas" class="span4">
                             <canvas id="chart-escolas" width="182" height="182"></canvas>
                             <h3>Escolas</h3>
-                            <p><span>Até 2012: </span>66</p>
-                            <p><span>Em 2013: </span>26</p>
+                            <p><span>Total: </span>71</p>
+                            <p><span>Em 2013: </span>34</p>
                         </div>
 
                         <div id="palestras" class="span4">
                             <canvas id="chart-palestras" width="182" height="182"></canvas>
                             <h3>Palestras</h3>
-                            <p><span>Até 2012: </span>150</p>
-                            <p><span>Em 2013: </span>100</p>
+                            <p><span>Total: </span>261</p>
+                            <p><span>Em 2013: </span>114</p>
                         </div>
 
                     </div>

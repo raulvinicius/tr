@@ -23,7 +23,7 @@
 
             </nav>
 
-            <div id="conteudo" class="span8">
+            <div id="conteudo" wclass="span8">
 
                 <h1>Título 1</h1>
                 <h2>Título 2</h2>

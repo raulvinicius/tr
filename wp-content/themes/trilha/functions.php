@@ -148,3 +148,15 @@ function codex_custom_init() {
 
 }
 add_action( 'init', 'codex_custom_init' );
+
+
+
+
+if ( function_exists( 'add_image_size' ) ) 
+{
+	add_image_size( 'foto-destaque', 360, 300, true );
+	add_image_size( 'zoom-destaque', 240, 300, true );
+	add_image_size( 'tb-lista', 220, 215, true );
+	add_image_size( 'tb-foto', 102, 100, true );
+	add_image_size( 'foto', 470, 460, true );
+}

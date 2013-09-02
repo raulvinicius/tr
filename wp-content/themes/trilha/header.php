@@ -20,19 +20,29 @@
         <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/css/bootstrap-responsive.css">
         <script src="<?php bloginfo('template_url') ?>/js/vendor/modernizr-2.6.2.min.js"></script>
 
+
     </head>
 
     <?php $urlLoja = strpos($_SERVER["REQUEST_URI"], "/loja"); ?>
 
     <body <?php echo ($urlLoja) ? "id=\"body-loja\"" : ""; ?> >
+
+        <?php 
+
+            echo "
+
+                <script type=\"text/javascript\">
+
+                    templateUrl = '" . get_bloginfo('template_url') . "/';
+                    blogUrl = '" . get_bloginfo('url') . "/';
+
+                </script>
+
+            ";
+
+        ?>
+
         <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
 
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
@@ -83,7 +93,7 @@
                             <div class="container">
                                 <i id="icone" class="span1 offset2"></i>
                                 <h2 class="span2">Meu Carrinho</h2>
-                                <p id="display" class="span5"><span class="font22">3</span>  Itens [<span> R$15,00 </span>]</p>
+                                <p id="display" class="span5"><span class="font22">0</span>  Itens [<span> R$0,00 </span>]</p>
                                 <div class="span1">
                                     <button id="btn-fechar" title="Continuar Comprando">Fechar</button>
                                 </div>
@@ -94,20 +104,6 @@
                                 <div class="row-fluid">
                                     <ul class="span8 offset2">
 
-                                        <?php for ($i=0; $i < 4; $i++) : ?> 
-
-                                            <li>
-                                                <div id="wrap-remover" class="span1">
-                                                    <button title="Remover produto do carrinho">Remover</button>
-                                                </div>
-                                                <div id="descricao" class="span9">
-                                                    <p><span>Produto</span>Descrição do produto</p>
-                                                </div>
-                                                <p id="preco" class="span2">R$ <span>59</span>,00</p>
-                                            </li>
-
-                                        <?php endfor; ?>
-
                                     </ul>
                                 </div>
                             </div>
@@ -116,7 +112,7 @@
                             <div class="container">
                                 <div id="fundo" class="span8 offset2">
                                     <div id="wrap-total" class="span5">
-                                        <p><span id="tag-preco">Total:</span> R$ <span id="preco">179</span>,00</p>
+                                        <p><span id="tag-preco">Total:</span> R$ <span id="preco">0</span>,00</p>
                                     </div>
                                     <div id="wrap-btns" class="span7">
                                         <button id="btn-continuar">Continuar comprando</button>
@@ -152,7 +148,7 @@
                                         </div>
 
                                         <div id="texto-carrinho" class="span10">
-                                            <p><span class="font22">3</span>  Itens [<span> R$15,00 </span>]</p>
+                                            <p><span class="font22">0</span>  Itens [<span> R$0,00 </span>]</p>
                                         </div>
 
                                         <div id="icon-seta-carrinho" class="span1">
@@ -204,6 +200,67 @@
                 <div id="banner"></div>
                 <div  id="bg-topo"></div>
                 <div  id="bg-sombra-topo"></div>
+
+            <?php else : ?>
+
+                <div id="sharebar">
+
+                    <div id="bg" class="container-fluid navbar-fixed-top">
+
+                        <div id="v-align" class="container">
+
+                            <div class="row-fluid">
+
+                                <div id="wrap" class="span6 offset3">
+
+                                    <div id="wrap-titulo" class="row-fluid">
+
+                                        <h3 class="span11">Compartilhe:</h3>
+                                        <button id="btn-fechar" class="close span1" data-dismiss="sharebar">x</button>
+
+                                    </div>
+
+                                    <div class="row-fluid">
+
+                                        <figure class="foto-produto span6">
+                                            <div id="wrap-imgs">
+                                                <?php $r = rand(1, 4); ?>
+                                                <img id="foto" class="animado-02-in-out" src="<?php bloginfo('template_url') ?>/img/produto0<?php echo $r ?>.jpg">
+                                            </div>
+                                        </figure>
+                                        <div id="descricao" class="span6">
+                                            <h2>Cadeirinha</h2>
+                                            <p id="texto">Laranja</p>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div id="wrap-share" class="row-fluid">
+
+                                        <div id="wrap-tw" class="span4">
+                                            <a href="https://twitter.com/share" class="twitter-share-button" data-text="Produtos personalizados da [hi]School" data-url="<?php bloginfo('url'); ?>" data-lang="pt">Tweetar</a>
+                                        </div>
+                                        <script>function doTw(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}/*doTw(document, 'script', 'twitter-wjs');*/</script>
+                                        
+                                        <div class="span4 fb-like" data-href="http://trilhacursos.com.br/loja" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false" data-font="arial" data-action="like"></div>
+                                        <script>function doFb(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";fjs.parentNode.insertBefore(js, fjs);}doFb(document, 'script', 'facebook-jssdk');</script>
+
+                                        <div class="span4">
+                                            <a id="email" href="#"><i id="icone-compartilha-email"></i>Por e-mail</a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             <?php endif; ?>
 <!-- ================FIM HEADER================ -->
