@@ -1657,6 +1657,11 @@ body #trilha #header
     display: none;
 }
 
+.produto.no-carrinho .foto-produto #carrinho
+{
+    display: inherit;
+}
+
 .produto #foto,
 .produto #zoom,
 .produto .foto-produto #desconto,
@@ -1852,7 +1857,7 @@ body #trilha #header
 #ver-produto #infos-produto .foto-produto
 {
     width: 459px;
-    height: 457px;
+    height: 440px;
     margin-left: 10px;
 }
 
@@ -1925,6 +1930,8 @@ body #trilha #header
     color: #666;
     font-size: 14px;
     height: 80px;
+    font-weight: inherit;
+    margin-top: 5px;
 }
 
 #ver-produto #wrap-info #variacoes
@@ -2010,7 +2017,7 @@ body #trilha #header
     margin-right: 10px;
 }
 
-#ver-produto #wrap-info #btn-acidionar
+#ver-produto #wrap-info #btn-adicionar
 {
     font-family: 'covered', cursive !important;
     font-size: 20px;
@@ -2018,25 +2025,47 @@ body #trilha #header
     color: white;
     background: url(img/trilha-bg-btn-add-carrinho.png) center top no-repeat; 
     border: none;
-    width: 131px;
+    width: 111px;
     height: 43px;
     float: left;
     margin-top: 13px;
 }
 
-#ver-produto #wrap-info #btn-acidionar:hover,
-#ver-produto #wrap-info #btn-acidionar:focus
+#ver-produto #wrap-info #wrap-qtd
+{
+    float: left;
+    width: 80px;
+    background: url(img/trilha-fim-bg-btn-add-carrinho.png) right top no-repeat;
+    height: 43px;
+    margin-top: 13px;
+}
+
+#ver-produto #wrap-info #qtd
+{
+    width: 45px;
+    height: 30px;
+    margin-top: 6px;
+    text-align: center;
+    padding: 0;
+    border-top: 1px solid #215089;
+    border-left: 1px solid #215089;
+    border-bottom: 1px solid #97bee1;
+    border-right: 1px solid #97bee1;
+}
+
+#ver-produto #wrap-info #btn-adicionar:hover,
+#ver-produto #wrap-info #btn-adicionar:focus
 {
     background-position: center bottom; 
 }
 
-#ver-produto #wrap-info #btn-acidionar #icone-carrinho
+#ver-produto #wrap-info #btn-adicionar #icone-carrinho
 {
     width: 23px;
     height: 18px;
     display: inline-block;
-    margin-left: -15px;
-    margin-right: 10px;
+    margin-left: -2px;
+    margin-right: 9px;
     vertical-align: middle;
     background: url(img/trilha-icone-btn-add-carrinho-branco.png);
 }

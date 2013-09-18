@@ -6,7 +6,10 @@
 
 <?php else : ?>
 
-	<?php get_header() ?>
+	<?php 
+		get_header();
+		the_post(); 
+	?>
 
 	<!-- sections vem aqui -->
 	        <section id="produto">
@@ -23,18 +26,37 @@
 									<figure class="foto-produto">
 									    <div id="wrap-imgs">
 									    	<ul>
-									    		<li>
-											        <img id="foto" class="animado-02-in-out" src="<?php bloginfo('template_url') ?>/img/produto01-g.jpg">
-									    		</li>
-									    		<li>
-											        <img id="foto" class="animado-02-in-out" src="<?php bloginfo('template_url') ?>/img/produto02-g.jpg">
-									    		</li>
-									    		<li>
-											        <img id="foto" class="animado-02-in-out" src="<?php bloginfo('template_url') ?>/img/produto03-g.jpg">
-									    		</li>
-									    		<li>
-											        <img id="foto" class="animado-02-in-out" src="<?php bloginfo('template_url') ?>/img/produto04-g.jpg">
-									    		</li>
+
+						    		    		<?php 
+						    		    			$fotos = get_field('fotos', $post->ID); 
+
+						    		    			foreach ($fotos as $foto ) :
+
+						    		    				$urlFoto = wp_get_attachment_image_src( $foto["foto"], 'foto' );
+						    		    		?>
+
+						    			    		<li>
+						    					        <img id="foto" class="animado-02-in-out" src="<?php echo $urlFoto[0] ?>">
+						    			    		</li>
+
+						    			    	<?php 
+						    			    		endforeach;
+						    			    	 ?>
+									    			    	 
+    		    			    	    		<?php 
+    		    			    	    			$zoom = get_field('zoom', $post->ID); 
+
+    	    			    	    				if ($zoom) :
+
+    	    			    	    				$urlFoto = wp_get_attachment_image_src( $zoom, 'foto' );
+    		    			    	    		?>
+
+    		    			    		    		<li>
+    		    			    				        <img id="foto" class="animado-02-in-out" src="<?php echo $urlFoto[0] ?>">
+    		    			    		    		</li>
+
+    	    			    		    		<?php endif; ?>
+
 									    	</ul>
 									    </div>
 									    <div id="desconto">
@@ -45,18 +67,31 @@
 									</figure>
 
 							    	<ul id="miniaturas">
-							    		<li>
-									        <img id="foto" class="animado-02-in-out" src="<?php bloginfo('template_url') ?>/img/produto01-tb.jpg">
-							    		</li>
-							    		<li>
-									        <img id="foto" class="animado-02-in-out" src="<?php bloginfo('template_url') ?>/img/produto02-tb.jpg">
-							    		</li>
-							    		<li>
-									        <img id="foto" class="animado-02-in-out" src="<?php bloginfo('template_url') ?>/img/produto03-tb.jpg">
-							    		</li>
-							    		<li>
-									        <img id="foto" class="animado-02-in-out" src="<?php bloginfo('template_url') ?>/img/produto04-tb.jpg">
-							    		</li>
+	    					    		<?php 
+	    		    		    			foreach ($fotos as $foto ) :
+
+	    		    		    				$urlFoto = wp_get_attachment_image_src( $foto["foto"], 'tb-foto' );
+	    		    		    		?>
+
+	    						    		<li>
+	    								        <img id="foto" class="animado-02-in-out" src="<?php echo $urlFoto[0] ?>">
+	    						    		</li>
+
+	    		    			    	<?php 
+	    		    			    		endforeach;
+	    		    			    	 ?>
+
+	    			    	    		<?php 
+    			    	    				if ($zoom) :
+
+    			    	    				$urlFoto = wp_get_attachment_image_src( $zoom, 'tb-foto' );
+	    			    	    		?>
+
+	    			    		    		<li>
+	    			    				        <img id="foto" class="animado-02-in-out" src="<?php echo $urlFoto[0] ?>">
+	    			    		    		</li>
+
+    			    		    		<?php endif; ?>
 							    	</ul>
 
 							    	<div id="compartilhe" class="span11">
@@ -71,8 +106,8 @@
 
 								<div id="wrap-info" class="span7">
 
-									<h2>Cadeira Clean</h2>
-									<p id="descricao">Padrão Mógno</p>
+									<h2><?php the_title(); ?></h2>
+									<div id="descricao"><?php echo get_field('descricao', $post->ID) ?></div>
 
 									<section id="variacoes">
 
@@ -116,9 +151,15 @@
 										<input id="qtd" type="number" name="quantidade" min="1" max="99" value="1">
 									</div>
 									<div id="wrap-preco">
-										<p>R$ <span>160</span>,00</p>
+										<?php 
+											$preco =  get_field('preco', $post->ID);
+											$precoU = $preco;
+											$preco = split(',', $preco);
+											$preco = '<span>' . $preco[0] . '</span>,' . $preco[1];
+										?>
+										<p data-u-price="<?php echo $precoU ?>">R$ <?php echo $preco ?></p>
 									</div>
-									<button id="btn-voltar">Voltar</button>
+									<button id="btn-voltar" onclick="history.back();">Voltar</button>
 									<div class="clearfix"></div>
 
 									<nav>

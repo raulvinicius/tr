@@ -195,9 +195,34 @@ $(document).ready(
 	    	var nomeProduto = $(this).closest('li.produto').find('#descricao h2').text();
 	    	var descricaoProduto = $(this).closest('li.produto').find('#descricao p').text();
 	    	var precoProduto = $(this).closest('li.produto').find('#preco p').text();
+	    	$(this).closest("li.produto").addClass("no-carrinho");
 
 	    	addAoCarrinho(idProduto, nomeProduto, descricaoProduto, precoProduto);
 	    })
+
+	    $('#produto #ver-produto #wrap-qtd input').mouseup(function()
+	    {
+	    	var valor = $(this).closest('#ver-produto').find('#wrap-preco p').attr('data-u-price');
+	    	valor = valor.replace(',', '.');
+	    	valor = parseFloat(valor);
+	    	valor = $(this).val() * valor;
+	    	valor = valor.toString();
+	    	valor = valor.replace('.', ',');
+	    	valor = valor.split(',');
+	    	if(valor.length == 2)
+	    	{
+		    	var valor1 = valor[1];
+		    	valor1 = valor1.slice(0, 2)
+		    	valor1 = (valor1.length < 2) ? valor1 + '0' : valor1;
+	    	}
+	    	else
+	    	{
+	    		var valor1 = '00';
+	    	}
+	    	valor = 'R$ <span>' + valor[0] + '</span>,' + valor1;
+	    	var valor = $('#produto #ver-produto #wrap-preco p').html(valor);
+
+	    });
 
 	}
 
@@ -211,13 +236,38 @@ arErros = {"404": 'Arquivo não encontrado'};
 
 function addAoCarrinho(idProduto, nomeProduto, descricaoProduto, precoProduto)
 {
-	$('#wrap-cart #wrap-produtos-cart ul').append('<li class="loading" data-id="' + idProduto + '" data-nome="' + nomeProduto + '" data-descricao="' + descricaoProduto + '" data-preco="' + precoProduto + '"><div id="wrap-remover" class="span1"><i class="icon-processando"></i></div><div id="descricao" class="span11">Adicionando: ' + nomeProduto + '</div></li>')
-	var e = $('#wrap-cart #wrap-produtos-cart ul li[data-id="'+ idProduto +'"]');
-	if ($('#wrap-cart').height() > 0)
+	var qtdProduto = 1;
+
+	$('#wrap-cart #wrap-produtos-cart ul li').each(function() 
 	{
-		abreCarrinho();
+		if ($(this).attr('data-id') == idProduto)
+		{
+			qtdProduto = parseInt($(this).find('#qtd').text());
+			qtdProduto += 1;
+			return false;
+		}
+	});
+
+
+	var strQtdProduto = qtdProduto.toString();
+
+	strQtdProduto = (strQtdProduto.length < 2) ? '0' + strQtdProduto : strQtdProduto;
+
+	if(qtdProduto == 1)
+	{
+		$('#wrap-cart #wrap-produtos-cart ul').append('<li class="loading" data-id="' + idProduto + '" data-quantidade="' + strQtdProduto + '" data-nome="' + nomeProduto + '" data-descricao="' + descricaoProduto + '" data-preco="' + precoProduto + '"><div id="wrap-remover" class="span1"><i class="icon-processando"></i></div><div id="descricao" class="span11">Adicionando: ' + nomeProduto + '</div></li>')
+		var e = $('#wrap-cart #wrap-produtos-cart ul li[data-id="'+ idProduto +'"]');
+		if ($('#wrap-cart').height() > 0)
+		{
+			abreCarrinho();
+		}
+		addAoCarrinhoBD(e);
 	}
-	addAoCarrinhoBD(e);
+	else
+	{
+		$('#wrap-cart #wrap-produtos-cart ul li[data-id="' + idProduto + '"]').find('#qtd').text(strQtdProduto);
+		atualizaValorCarrinho();
+	}
 }
 
 function addAoCarrinhoBD(e)
@@ -232,7 +282,7 @@ function addAoCarrinhoBD(e)
 			var preco = e.attr('data-preco');
 			preco = preco.split('R$')[1];
 			preco = preco.split(',');
-			e.html('<div id="wrap-remover" class="span1"><button title="Remover produto do carrinho">Remover</button></div><div id="descricao" class="span9"><p><span>' + e.attr('data-nome') + '</span>' + e.attr('data-descricao') + '</p></div><p id="preco" class="span2">R$ <span>' + preco[0] + '</span>,' + preco[1] + '</p>');
+			e.html('<div id="wrap-remover" class="span1"><button title="Remover produto do carrinho">Remover</button></div><div id="descricao" class="span9"><p><span id="qtd">' + e.attr('data-quantidade') + '</span><span>' + e.attr('data-nome') + '</span>' + e.attr('data-descricao') + '</p></div><p id="preco" class="span2">R$ <span>' + preco[0] + '</span>,' + preco[1] + '</p>');
 
 			atualizaValorCarrinho();
 
@@ -250,9 +300,12 @@ function atualizaValorCarrinho()
 {
 	var precoProduto = "";
 	var precoTotal = 0;
-	$('#wrap-cart #wrap-produtos-cart ul li').each(function () {
+	$('#wrap-cart #wrap-produtos-cart ul li').each(function () 
+	{
+		qtdProduto = parseInt( $(this).find('#qtd').text() );
 		precoProduto = $(this).find('#preco').text().split('R$')[1];
 		precoProduto = parseFloat(precoProduto.replace(",", "."));
+		precoProduto = qtdProduto * precoProduto;
 		precoTotal += precoProduto;
 	});
 

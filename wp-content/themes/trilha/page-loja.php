@@ -80,7 +80,6 @@
 
 	                                    <figure class="foto-produto">
 	                                        <div id="wrap-imgs">
-	                                            <?php $r = rand(1, 4); ?>
 		                                        <?php 
 		                                        	$urlFoto = get_field('fotos', $post->ID); 
 		                                        	$urlFoto = $urlFoto[0]['foto'];
@@ -112,7 +111,7 @@
 
 		                                    <?php endif ?>
 
-	                                        <div id="carrinho"></div>
+	                                        <div id="carrinho" title="Você já tem esse produto no carrinho"></div>
 
 	                                        <?php if (get_post_meta($post->ID, 'novidade', true)) : ?>
 	                                        	<div id="new"></div>
