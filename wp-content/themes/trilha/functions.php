@@ -160,3 +160,5 @@ if ( function_exists( 'add_image_size' ) )
 	add_image_size( 'tb-foto', 102, 100, true );
 	add_image_size( 'foto', 470, 460, true );
 }
+
+$unidadeVariacao = array("Altura" => 'cm', "Largura" => 'cm', "Litragem" => 'ml');

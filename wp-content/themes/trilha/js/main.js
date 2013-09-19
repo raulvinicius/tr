@@ -197,11 +197,17 @@ $(document).ready(
 	    	var precoProduto = $(this).closest('li.produto').find('#preco p').text();
 	    	$(this).closest("li.produto").addClass("no-carrinho");
 
-	    	addAoCarrinho(idProduto, nomeProduto, descricaoProduto, precoProduto);
+	    	addAoCarrinho(idProduto, nomeProduto, descricaoProduto, precoProduto, "1");
 	    })
 
-	    $('#produto #ver-produto #wrap-qtd input').mouseup(function()
+	    $('.btn-add-produto').bind('click', function()
 	    {
+	    	addAoCarrinho( $(this).attr('data-id'), $(this).attr('data-nome'), $(this).attr('data-descricao'), $(this).attr('data-preco'), $(this).attr('data-quantidade') );
+	    })
+
+	    $('#produto #ver-produto #wrap-qtd input').change(function()
+	    {
+	    	var valor = $(this).closest('#ver-produto').find('#wrap-info .btn-add-produto').attr('data-quantidade', $(this).val());
 	    	var valor = $(this).closest('#ver-produto').find('#wrap-preco p').attr('data-u-price');
 	    	valor = valor.replace(',', '.');
 	    	valor = parseFloat(valor);
@@ -224,6 +230,18 @@ $(document).ready(
 
 	    });
 
+
+	    // galeria de fotos do single-produto
+	    $('#ver-produto #wrap-fotos #miniaturas li').bind('click', function() 
+	    {
+	    	var thisN = $(this).index( );
+	    	thisN = parseInt( $(this).index( ) ) + 1;
+	    	thisN = thisN.toString();
+		    $('#ver-produto #wrap-fotos figure ul li').css('opacity', '0');
+		    $('#ver-produto #wrap-fotos figure ul li:nth-child(' + thisN + ')').css('opacity', '1') 
+	    });
+
+
 	}
 
 );
@@ -234,27 +252,33 @@ arErros = {"404": 'Arquivo não encontrado'};
 
 
 
-function addAoCarrinho(idProduto, nomeProduto, descricaoProduto, precoProduto)
+function addAoCarrinho(idProduto, nomeProduto, descricaoProduto, precoProduto, qtdProduto)
 {
-	var qtdProduto = 1;
+	qtdProduto = (qtdProduto == undefined) ? 1 : qtdProduto;
+	var novoProduto = true;
 
 	$('#wrap-cart #wrap-produtos-cart ul li').each(function() 
 	{
 		if ($(this).attr('data-id') == idProduto)
 		{
-			qtdProduto = parseInt($(this).find('#qtd').text());
-			qtdProduto += 1;
+			qtdProduto = parseInt(qtdProduto) + parseInt($(this).find('#qtd').text());
+			novoProduto = false;
 			return false;
 		}
 	});
 
 
 	var strQtdProduto = qtdProduto.toString();
-
 	strQtdProduto = (strQtdProduto.length < 2) ? '0' + strQtdProduto : strQtdProduto;
 
-	if(qtdProduto == 1)
+	if( descricaoProduto.length > 30 )
 	{
+		descricaoProduto = descricaoProduto.slice(0, 30) + '...';
+	}
+
+	if(novoProduto == true)
+	{
+
 		$('#wrap-cart #wrap-produtos-cart ul').append('<li class="loading" data-id="' + idProduto + '" data-quantidade="' + strQtdProduto + '" data-nome="' + nomeProduto + '" data-descricao="' + descricaoProduto + '" data-preco="' + precoProduto + '"><div id="wrap-remover" class="span1"><i class="icon-processando"></i></div><div id="descricao" class="span11">Adicionando: ' + nomeProduto + '</div></li>')
 		var e = $('#wrap-cart #wrap-produtos-cart ul li[data-id="'+ idProduto +'"]');
 		if ($('#wrap-cart').height() > 0)
@@ -265,8 +289,16 @@ function addAoCarrinho(idProduto, nomeProduto, descricaoProduto, precoProduto)
 	}
 	else
 	{
-		$('#wrap-cart #wrap-produtos-cart ul li[data-id="' + idProduto + '"]').find('#qtd').text(strQtdProduto);
-		atualizaValorCarrinho();
+		var e = $('#wrap-cart #wrap-produtos-cart ul li[data-id="'+ idProduto +'"]');
+		e.html('<div id="wrap-remover" class="span1"><i class="icon-processando"></i></div><div id="descricao" class="span11">Atualizando: ' + nomeProduto + '</div>');
+		e.addClass('loading');
+		e.attr('data-id', idProduto);
+		e.attr('data-quantidade', strQtdProduto);
+		e.attr('data-nome', nomeProduto);
+		e.attr('data-descricao', descricaoProduto);
+		e.attr('data-preco', precoProduto);
+
+		atualizaQtdBD(e);
 	}
 }
 
@@ -282,6 +314,34 @@ function addAoCarrinhoBD(e)
 			var preco = e.attr('data-preco');
 			preco = preco.split('R$')[1];
 			preco = preco.split(',');
+			e.removeClass('loading');
+			e.html('<div id="wrap-remover" class="span1"><button title="Remover produto do carrinho">Remover</button></div><div id="descricao" class="span9"><p><span id="qtd">' + e.attr('data-quantidade') + '</span><span>' + e.attr('data-nome') + '</span>' + e.attr('data-descricao') + '</p></div><p id="preco" class="span2">R$ <span>' + preco[0] + '</span>,' + preco[1] + '</p>');
+
+			atualizaValorCarrinho();
+
+		},
+		error: function (data, data1, data2)
+		{
+			
+			e.html('<div id="wrap-remover" class="span12"><p style="color: red">Ops! Ocorreu o erro ' + data.status + '. Contate o suporte.</p></div>');
+
+		}
+	});
+}
+
+function atualizaQtdBD(e)
+{
+	$.ajax({
+		url: templateUrl + 'php/atualiza-qtd-produto-carrinho-bd.php',
+		type: 'POST',
+		data: {id: e.attr('data-id')},
+		dataType: 'json',
+		success: function (data)
+		{
+			var preco = e.attr('data-preco');
+			preco = preco.split('R$')[1];
+			preco = preco.split(',');
+			e.removeClass('loading');
 			e.html('<div id="wrap-remover" class="span1"><button title="Remover produto do carrinho">Remover</button></div><div id="descricao" class="span9"><p><span id="qtd">' + e.attr('data-quantidade') + '</span><span>' + e.attr('data-nome') + '</span>' + e.attr('data-descricao') + '</p></div><p id="preco" class="span2">R$ <span>' + preco[0] + '</span>,' + preco[1] + '</p>');
 
 			atualizaValorCarrinho();
@@ -323,7 +383,11 @@ function atualizaValorCarrinho()
 
 function atualizaDisplay()
 {
-	var qtdItens = $('#wrap-cart #wrap-produtos-cart ul li').length;
+	var qtdItens = 0;
+	$('#wrap-cart #wrap-produtos-cart ul li').each(function() 
+	{
+		qtdItens += parseInt( $(this).find('#qtd').text() );
+	});
 	var txtItem = (qtdItens != 1) ? 'Itens' : 'Item';
 	var total = $('#wrap-cart #total #wrap-total p').text().split('Total: ')[1];
 
@@ -346,6 +410,17 @@ function openShareBar (imgUrl, nomeProduto, descricaoProduto, urlProduto)
 	$('#sharebar #wrap-imgs img').attr('src', imgUrl);
 	$('#sharebar #descricao h2').html(nomeProduto);
 	$('#sharebar #bg #descricao #texto').html(descricaoProduto);
+}
+
+function refreshShare ()
+{
+	$('#sharebar #wrap-share #wrap-tw').html('<a href="https://twitter.com/share" class="twitter-share-button" data-text="' + nomeProduto + '" data-lang="pt">Tweetar</a>');
+	$('#sharebar #wrap-share #wrap-tw .twitter-share-button').attr('data-url', urlProduto);
+	$('script#twitter-wjs').remove();
+	doTw(document, 'script', 'twitter-wjs');
+
+	$('#sharebar #wrap-share .fb-like').attr('data-href', urlProduto);
+	FB.XFBML.parse()
 }
 
 

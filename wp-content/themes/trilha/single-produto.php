@@ -35,14 +35,14 @@
 						    		    				$urlFoto = wp_get_attachment_image_src( $foto["foto"], 'foto' );
 						    		    		?>
 
-						    			    		<li>
+						    			    		<li class="animado-02-in-out">
 						    					        <img id="foto" class="animado-02-in-out" src="<?php echo $urlFoto[0] ?>">
 						    			    		</li>
 
 						    			    	<?php 
 						    			    		endforeach;
 						    			    	 ?>
-									    			    	 
+
     		    			    	    		<?php 
     		    			    	    			$zoom = get_field('zoom', $post->ID); 
 
@@ -51,7 +51,7 @@
     	    			    	    				$urlFoto = wp_get_attachment_image_src( $zoom, 'foto' );
     		    			    	    		?>
 
-    		    			    		    		<li>
+    		    			    		    		<li class="animado-02-in-out">
     		    			    				        <img id="foto" class="animado-02-in-out" src="<?php echo $urlFoto[0] ?>">
     		    			    		    		</li>
 
@@ -97,9 +97,9 @@
 							    	<div id="compartilhe" class="span11">
 
 							    		<h3>Compartilhe:</h3>
-							    		<a href="https://twitter.com/share" class="twitter-share-button" data-text="Produtos personalizados da [hi]School" data-lang="pt">Tweetar</a>
+							    		<a href="https://twitter.com/share" class="twitter-share-button" data-text="<?php the_title(); ?>" data-lang="pt">Tweetar</a>
 							    		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-							    		<div class="fb-like" data-href="http://trilhacursos.com.br/loja" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false" data-font="arial" data-action="recommend"></div>
+							    		<div class="fb-like" data-href="<?php echo get_permalink($post->ID) ?>" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false" data-font="arial" data-action="recommend"></div>
 							    	</div>
 
 								</div>
@@ -107,52 +107,69 @@
 								<div id="wrap-info" class="span7">
 
 									<h2><?php the_title(); ?></h2>
-									<div id="descricao"><?php echo get_field('descricao', $post->ID) ?></div>
+									<?php $descricao = get_field('descricao', $post->ID) ?>
+									<div id="descricao"><?php echo $descricao ?></div>
 
 									<section id="variacoes">
+							    		<?php 
+							    			$variacoes = get_field('variacoes', $post->ID); 
 
-										<h3>Tamanhos</h3>
-										<ul id="lista">
-											<li>
-												<h4>P</h4>
-												<ul>
-													<li><span>Largura: </span>50 cm</li>
-													<li><span>Altura: </span>150 cm</li>
-												</ul>
-											</li>
-											<li>
-												<h4>M</h4>
-												<ul>
-													<li><span>Largura: </span>50 cm</li>
-													<li><span>Altura: </span>150 cm</li>
-												</ul>
-											</li>
-											<li>
-												<h4>G</h4>
-												<ul>
-													<li><span>Largura: </span>50 cm</li>
-													<li><span>Altura: </span>150 cm</li>
-												</ul>
-											</li>
-											<li>
-												<h4>GG</h4>
-												<ul>
-													<li><span>Largura: </span>50 cm</li>
-													<li><span>Altura: </span>150 cm</li>
-												</ul>
-											</li>
-											<div class="clearfix"></div>
-										</ul>
+							    			echo '<ul>';
+
+							    			foreach ($variacoes as $variacao ) :
+											 
+							    				echo '<li>';
+
+												echo '<h3>' . $variacao["variacao"] . '</h3>';
+
+							    				$opcoesVariacao = $variacao["opcoes_variacao"];
+
+							    				echo '<ul id="lista">';
+
+							    				foreach( $opcoesVariacao as $opcaoVariacao) :
+							    					echo '<li><h4>' . $opcaoVariacao['opcao_variacao'] . '</h4>';
+
+								    				$propriedades = $opcaoVariacao["propriedades"];
+
+							    					echo '<ul>';
+
+							    						foreach( $propriedades as $propriedade ) :
+
+							    							echo '<li>';
+
+							    							echo '<span class="' . strtolower($propriedade['nome']) . '">' . $propriedade['nome'] . ': </span>' . $propriedade['valor'] . ' ' . $unidadeVariacao[ $propriedade['nome'] ];
+
+								    						echo '</li>';
+
+						    							endforeach;
+
+							    					echo '</ul>';
+
+						    					endforeach;
+
+							    				echo '</ul>';
+
+							    				echo '</li>';
+
+								    		endforeach;
+
+					    					echo '</ul><div class="clearfix"></div>'
+								    	 ?>
 
 									</section>
+									<?php 
+										$preco =  get_field('preco', $post->ID); 
+									?>
 
-									<button id="btn-adicionar"><i id="icone-carrinho"></i>Adicionar</button>
+									<button id="btn-adicionar" class="btn-add-produto" data-id="<?php echo $post->ID ?>" data-nome="<?php the_title() ?>" data-descricao="<?php echo strip_tags($descricao) ?>" data-preco="<?php echo 'R$ ' . $preco ?>" data-quantidade="1"><i id="icone-carrinho"></i>Adicionar</button>
 									<div id="wrap-qtd">
-										<input id="qtd" type="number" name="quantidade" min="1" max="99" value="1">
+										<?php 
+											$max = get_field('estoque', $post->ID);
+										 ?>
+										<input id="qtd" type="number" name="quantidade" min="1" max="<?php echo $max ?>" value="1">
 									</div>
 									<div id="wrap-preco">
 										<?php 
-											$preco =  get_field('preco', $post->ID);
 											$precoU = $preco;
 											$preco = split(',', $preco);
 											$preco = '<span>' . $preco[0] . '</span>,' . $preco[1];
