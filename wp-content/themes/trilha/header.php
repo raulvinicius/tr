@@ -1,3 +1,12 @@
+
+<?php
+//    unset( $_COOKIE['hicart'] );
+    if( !isset( $_COOKIE['hicart'] ) ) :
+        setcookie('hicart', json_encode( array() ), time() + 86400 * 14, '/'); //expira em duas semanas
+    endif;
+
+ ?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -103,7 +112,7 @@
                             <div id="produtos-cart" class="container">
                                 <div class="row-fluid">
                                     <ul class="span8 offset2">
-
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -167,23 +176,42 @@
                         </div>
                     </div>
 
+                    <?php 
+                    
+                    $args = array(
+                        'type'                     => 'post',
+                        'orderby'                  => 'name',
+                        'order'                    => 'ASC',
+                        'exclude'                  => '1',
+                        'include'                  => ''
+
+                    );
+
+                    $cats =  get_categories( $args );
+
+                    ?>
 
                     <div id="categorias" class="container-fluid">
                         <div class="container">
                             <div class="row-fluid">
 
                                 <ul>
-                                    <li class="animado-02-in-out">
-                                        <a href="#"><img src="<?php bloginfo('template_url') ?>/img/trilha-icon-canecas.png"><p>Canecas</p></a>
-                                    </li>
+                                    <?php
 
-                                    <li class="animado-02-in-out">
-                                        <a href="#"><img src="<?php bloginfo('template_url') ?>/img/trilha-icon-camisetas.png"><p>Camisetas</p></a>
-                                    </li>
+                                        foreach ( $cats as $cat ) : 
 
-                                    <li class="animado-02-in-out">
-                                        <a href="#"><img src="<?php bloginfo('template_url') ?>/img/trilha-icon-bottons.png"><p>Bottons</p></a>
-                                    </li>
+                                            $nome = $cat->name;
+
+                                            $link = get_category_link( $cat->cat_ID );
+
+                                        ?>
+
+                                        <li class="animado-02-in-out">
+                                            <a href="<?php echo $link ?>"><img src="<?php bloginfo('template_url') ?>/img/trilha-icon-<?php echo strtolower($nome) ?>.png"><p><?php echo $nome ?></p></a>
+                                        </li>
+
+                                    <?php endforeach; ?>
+
                                 </ul>
 
                             </div>
@@ -194,6 +222,9 @@
             
             </header>
 
+            <div id="alerts">
+
+            </div>
 
             <?php if ( !$urlLoja ) : ?>
 

@@ -103,7 +103,10 @@
 
 								</section>
 
-								<button id="btn-acidionar"><i id="icone-carrinho"></i>Adicionar</button>
+								<button id="btn-adicionar"><i id="icone-carrinho"></i>Adicionar</button>
+								<div id="wrap-qtd">
+									<input id="qtd" type="number" name="quantidade" min="1" max="99" value="1">
+								</div>
 								<div id="wrap-preco">
 									<p>R$ <span>160</span>,00</p>
 								</div>

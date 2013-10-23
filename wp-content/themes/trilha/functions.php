@@ -66,7 +66,8 @@ function codex_custom_init() {
 		'has_archive' => true, 
 		'hierarchical' => false,
 		'menu_position' => 5,
-		'supports' => array( 'title', 'author', 'thumbnail' )
+		'supports' => array( 'title', 'author', 'thumbnail' ),
+		'taxonomies' => array('category', 'post_tag')
 	); 
 	register_post_type('produto',$argsProdutos);
 
@@ -149,6 +150,11 @@ function codex_custom_init() {
 }
 add_action( 'init', 'codex_custom_init' );
 
+function produto_add_default_boxes() 
+{
+    register_taxonomy_for_object_type('category', 'produto');
+    register_taxonomy_for_object_type('post_tag', 'produto');
+}
 
 
 
@@ -160,3 +166,26 @@ if ( function_exists( 'add_image_size' ) )
 	add_image_size( 'tb-foto', 102, 100, true );
 	add_image_size( 'foto', 470, 460, true );
 }
+
+
+function doSelect($val1, $val2, $tipo = 'selected')
+{
+	if($val1 == $val2)
+	{
+		return $tipo;
+	}
+}
+
+
+function pluralize ($num, $plural = 's', $single = '')
+{ 
+    if ($num == 1) :
+    	return $single; 
+ 	else :
+ 		return $plural; 
+ 	endif;
+}
+
+
+
+$unidadeVariacao = array("Altura" => 'cm', "Largura" => 'cm', "Litragem" => 'ml');

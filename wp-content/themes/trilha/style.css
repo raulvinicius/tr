@@ -749,6 +749,7 @@ body #trilha #header
 #trilha #bg-base.loja ul li a:hover,
 #trilha #bg-base.loja ul li a:focus
 {
+    text-decoration: none;
     color: white;
 }
 
@@ -1413,6 +1414,22 @@ body #trilha #header
     text-align: center;
 }
 
+#carousel .carousel-control
+{
+    top: 50%;
+    width: 53px;
+    height: 53px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: none;
+}
+
+#carousel .carousel-control img
+{
+    margin-top: 8px;
+}
+
 #carousel #textos-carousel,
 #carousel #imagens-carousel
 {
@@ -1435,7 +1452,7 @@ body #trilha #header
     text-align: left;
 }
 
-#carousel #textos-carousel #descricao
+#carousel #textos-carousel #descricao p
 {
     font-family: Arial;
     font-size: 13px;
@@ -1451,11 +1468,12 @@ body #trilha #header
     margin-top: 38%;
     text-align: right;
 }
+
 #carousel #textos-carousel #preco span
 {
     font-size: 60px;
     display: inline-block;
-    vertical-align: -67%;
+    vertical-align: -39%;
 }
 
 #carousel #imagens-carousel
@@ -1545,7 +1563,8 @@ body #trilha #header
     padding: 8px 5px 5px;
 }
 
-#paginacao ul .numeracao:hover
+#paginacao ul .numeracao:hover,
+#paginacao ul .atual
 {
     background-position: center bottom;
     color: white;
@@ -1618,6 +1637,8 @@ body #trilha #header
 .bg-caderno
 {
     background: url(img/trilha-bg-caderno.jpg);
+    padding-top: 0.1px;
+    padding-bottom:1px;
 }
 
 #lista-produtos ul,
@@ -1625,6 +1646,20 @@ body #trilha #header
 {
     list-style: none;
     margin: 10px auto 20px;
+}
+
+#lista-produtos #msg-busca
+{
+    font-family: "covered", cursive !important;
+    font-size: 22px;
+    margin: 30px 0 40px;
+    text-align: left;
+}
+
+#lista-produtos #msg-busca span
+{
+    color: #B60000;
+    font-size: 30px;
 }
 
 .produto
@@ -1663,6 +1698,11 @@ body #trilha #header
 .produto .foto-produto #carrinho
 {
     display: none;
+}
+
+.produto.no-carrinho .foto-produto #carrinho
+{
+    display: inherit;
 }
 
 .produto #foto,
@@ -1860,8 +1900,9 @@ body #trilha #header
 #ver-produto #infos-produto .foto-produto
 {
     width: 459px;
-    height: 457px;
+    height: 440px;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 #ver-produto #infos-produto .foto-produto ul,
@@ -1916,6 +1957,25 @@ body #trilha #header
     vertical-align: middle;
 }
 
+#ver-produto #wrap-fotos figure ul
+{
+    position: relative;
+}
+
+#ver-produto #wrap-fotos figure ul li
+{
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    filter:alpha(opacity=0);
+}
+
+#ver-produto #wrap-fotos figure ul li:first-child
+{
+    opacity: 1;
+    filter:alpha(opacity=100);
+}
+
 #ver-produto #wrap-info h2,
 #ver-produto #wrap-info #variacoes h3
 {
@@ -1933,6 +1993,8 @@ body #trilha #header
     color: #666;
     font-size: 14px;
     height: 80px;
+    font-weight: inherit;
+    margin-top: 5px;
 }
 
 #ver-produto #wrap-info #variacoes
@@ -2018,7 +2080,22 @@ body #trilha #header
     margin-right: 10px;
 }
 
-#ver-produto #wrap-info #btn-acidionar
+#ver-produto #wrap-info #variacoes #lista > li ul li .altura
+{
+    background: url(img/trilha-bg-icone-variacao-altura.png);
+}
+
+#ver-produto #wrap-info #variacoes #lista > li ul li .largura
+{
+    background: url(img/trilha-bg-icone-variacao-largura.png);
+}
+
+#ver-produto #wrap-info #variacoes #lista > li ul li .litragem
+{
+    background: url(img/trilha-bg-icone-variacao-litragem.png);
+}
+
+#ver-produto #wrap-info #btn-adicionar
 {
     font-family: 'covered', cursive !important;
     font-size: 20px;
@@ -2026,25 +2103,47 @@ body #trilha #header
     color: white;
     background: url(img/trilha-bg-btn-add-carrinho.png) center top no-repeat; 
     border: none;
-    width: 131px;
+    width: 111px;
     height: 43px;
     float: left;
     margin-top: 13px;
 }
 
-#ver-produto #wrap-info #btn-acidionar:hover,
-#ver-produto #wrap-info #btn-acidionar:focus
+#ver-produto #wrap-info #wrap-qtd
+{
+    float: left;
+    width: 80px;
+    background: url(img/trilha-fim-bg-btn-add-carrinho.png) right top no-repeat;
+    height: 43px;
+    margin-top: 13px;
+}
+
+#ver-produto #wrap-info #qtd
+{
+    width: 45px;
+    height: 30px;
+    margin-top: 6px;
+    text-align: center;
+    padding: 0;
+    border-top: 1px solid #215089;
+    border-left: 1px solid #215089;
+    border-bottom: 1px solid #97bee1;
+    border-right: 1px solid #97bee1;
+}
+
+#ver-produto #wrap-info #btn-adicionar:hover,
+#ver-produto #wrap-info #btn-adicionar:focus
 {
     background-position: center bottom; 
 }
 
-#ver-produto #wrap-info #btn-acidionar #icone-carrinho
+#ver-produto #wrap-info #btn-adicionar #icone-carrinho
 {
     width: 23px;
     height: 18px;
     display: inline-block;
-    margin-left: -15px;
-    margin-right: 10px;
+    margin-left: -2px;
+    margin-right: 9px;
     vertical-align: middle;
     background: url(img/trilha-icone-btn-add-carrinho-branco.png);
 }
@@ -2088,6 +2187,7 @@ body #trilha #header
     text-shadow: 0 1px 0 white;
     float: left;
     margin-top: 13px;
+    margin-left: 30px;
 }
 
 #ver-produto #wrap-info #btn-voltar:hover,
@@ -2124,12 +2224,23 @@ body #trilha #header
 #ver-produto #wrap-info #opcoes #icone-prazo-entrega,
 #ver-produto #wrap-info #opcoes #icone-indique
 {
-    background: url(img/trilha-icone-prazos-entrega.png);
+    background: url(img/trilha-icone-prazos-entrega.png) top center;
     vertical-align: middle;
     width: 21px;
     height: 21px;
     display: inline-block;
     margin-right: 10px;
+}
+
+#ver-produto #wrap-info #opcoes a:hover #icone-prazo-entrega,
+#ver-produto #wrap-info #opcoes a:hover #icone-indique
+{
+    background-position: bottom center;
+}
+
+#ver-produto #wrap-info #opcoes a:hover
+{
+    text-decoration: none;
 }
 
 #ver-produto #wrap-info #opcoes #icone-indique
@@ -2347,6 +2458,21 @@ body #trilha #header
 
 
 
+
+#alerts
+{
+    position: fixed;
+    width: 96%;
+    bottom: 0;
+    z-index: 1300;
+    padding: 20px 2% 0;
+    pointer-events: none;
+}
+
+#alerts .alert
+{
+    display: none;
+}
 
 #sharebar
 {

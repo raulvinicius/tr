@@ -8,12 +8,8 @@
 
 	<?php get_header() ?>
 
-<!-- adsf -->
-
-	        
-
-
-
+	
+	
 	<?php get_footer() ?>
 	
 <?php endif; ?>

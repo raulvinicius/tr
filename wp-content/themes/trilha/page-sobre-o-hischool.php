@@ -36,10 +36,21 @@
                 <div class="container">
                     <div class="row-fluid">
 
+
+                        <?php 
+
+                            $alunos = number_format( get_field('total_alunos'), 0, ',', '.');
+                            $alunos2013 = number_format( get_field('alunos_2013'), 0, ',', '.');
+                            $escolas = number_format( get_field('total_escolas'), 0, ',', '.');
+                            $escolas2013 = number_format( get_field('escolas_2013'), 0, ',', '.');
+                            $palestras = number_format( get_field('total_palestras'), 0, ',', '.');
+                            $palestras2013 = number_format( get_field('palestras_2013'), 0, ',', '.');
+
+                         ?>
                         <div id="alunos" class="span4">
                             <canvas id="chart-alunos" width="182" height="182"></canvas>
                             <h3>Alunos</h3>
-                            <p><span>Total: </span>26.136</p>
+                            <p><span>Total: </span><?php echo $alunos ?></p>
                             <p><span>Em 2013: </span>10.878</p>
                         </div>
 
