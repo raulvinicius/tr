@@ -1246,7 +1246,8 @@ body #trilha #header
     font-size: 12px;
 }
 
-#header-loja form input[type="submit"]
+#header-loja form input[type="submit"],
+.submit-seta
 {
     background: url(img/trilha-seta-login.png) no-repeat center;
     border: none;
@@ -2478,3 +2479,141 @@ body #trilha #header
     margin-right: 10px;
 }
 
+
+
+/*------------------------> 13/09/13 <------------------------*/
+
+
+#institucional #conteudo #finalizar
+{
+    margin-top: 35px;
+    margin-bottom: 65px;
+}
+
+#institucional #conteudo #finalizar h4
+{
+    margin-left: 15px;
+}
+
+#institucional #conteudo #finalizar img
+{
+    float: right;
+    margin-right: 20px;
+}
+
+#institucional #conteudo #wrap-finalizar
+{
+    background: #f7f7f7;
+    color: #666666;
+    font-size: 13px;
+    text-align: center;
+}
+
+#institucional #conteudo #wrap-finalizar #wrap-opcao-cadastro span
+{
+    width: 50px;
+    height: 30px;
+    display: block;
+    background: white;
+    border: 1px solid #d1d1d1;
+    border-radius: 3px;
+    position: relative;
+    bottom: 150px;
+    left: 50%;
+    margin-left: -25px;
+}
+
+#institucional #conteudo #wrap-finalizar #wrap-opcao-cadastro span p
+{
+    font-family: "covered", cursive;
+    color: #b60000;
+    font-size: 26px;
+    margin-top: 5px;
+}
+
+#institucional #conteudo #wrap-finalizar #sou-cadastrado-login,
+#institucional #conteudo #wrap-finalizar #fazer-cadastro-login
+{
+    display: none;
+}
+
+#institucional #conteudo #wrap-finalizar #lbl-sou-cadastrado-login
+{
+    width: 226px;
+    height: 236px;
+    margin-top: 20px;
+    display: inline-block;
+    background: url(img/trilha-identificacao-sou-cadastrado-login.png) center;
+}
+
+#institucional #conteudo #wrap-finalizar #lbl-fazer-cadastro-login
+{
+    width: 226px;
+    height: 236px;
+    margin-left: -10px;
+    display: inline-block;
+    background: url(img/trilha-identificacao-fazer-cadastro-login.png) center;
+}
+
+#institucional #conteudo #wrap-finalizar form
+{
+    margin-top: 10px;
+}
+
+#institucional #conteudo #wrap-finalizar form label
+{
+    width: 210px;
+    display: inline-block;
+    text-align: left;
+}
+
+/*#institucional #conteudo #wrap-finalizar form #label-login
+{
+    width: 210px;
+}*/
+
+#institucional #conteudo #wrap-finalizar form #input-login,
+#institucional #conteudo #wrap-finalizar form #input-password
+{
+    width: 200px;
+    height: 27px;
+    box-shadow: 0 2px 5px #e8e8e8;
+    color: #003b75;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+#institucional #conteudo #wrap-finalizar form #input-password
+{
+    width: 160px;
+    margin-right: 10px;
+}
+
+#institucional #conteudo #wrap-finalizar form input[type="submit"]
+{
+    margin-top: -10px;
+}
+
+#institucional #conteudo #rodape-finalizar
+{
+    height: 70px;
+    background: #efefef;
+    color: #004990;
+    font-size: 11px;
+    text-align: center;
+    margin-bottom: 200px;
+}
+
+#institucional #conteudo #rodape-finalizar ul
+{
+    width: 150px;
+    margin-top: 15px;
+    display: inline-block;
+    list-style: none;
+    font-style: italic;
+}
+
+#institucional #conteudo #rodape-finalizar ul li a:hover
+{
+    text-decoration: none;
+}
