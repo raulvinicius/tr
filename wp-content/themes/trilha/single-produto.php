@@ -193,27 +193,135 @@
 
 						</div>
 
-						<section id="relacionados">
+						<?php 
 
-							<div class="row-fluid">
+								$arTax = wp_get_post_terms($post->ID);
+								$pTax = array();
 
-								<h2 id="titulo">Talvez você também goste de:</h2>
+								foreach ($arTax as $tax)
+								{
+									array_push( $pTax, $tax->name );
+								}
 
-							</div>
+								$qrArgs = array( 'post_type' => 'produto', 'tag' => implode(",", $pTax), 'posts_per_page' => -1, 'post__not_in' => array( get_the_ID() ) );
 
-							<div class="row-fluid">
+								$qr = new WP_Query( $qrArgs );
 
-								<div class="span1">
-									<button id="btn-anterior" disabled="disabled">Anteriores</button>
-								</div>
+								if( $qr->have_posts() && count(	$pTax ) > 0 ) :
 
-								<div id="lista" class="span10">
+								?>
 
-									<ul id="produtos" class="animado-02-in-out" data-m="0">
+								<section id="relacionados">
 
-										<?php for ($i=0; $i < 10; $i++) : ?>
+									<div class="row-fluid">
 
-										    <li id="produto" class="produto">
+										<h2 id="titulo">Talvez você também goste de:</h2>
+
+									</div>
+
+									<div class="row-fluid">
+
+										<div class="span1">
+											<button id="btn-anterior" disabled="disabled">Anteriores</button>
+										</div>
+
+										<div id="lista" class="span10">
+
+											<ul id="produtos" class="animado-02-in-out" data-m="0">
+
+
+												<?php
+
+													while ( $qr->have_posts() ) :
+
+														$qr->the_post();
+
+
+												?>
+				 	                                <li id="produto" class="produto" data-id='<?php echo $post->ID ?>'>
+
+				 	                                    <figure class="foto-produto">
+				 	                                        <div id="wrap-imgs">
+				 		                                        <?php 
+				 		                                        	$urlFoto = get_field('fotos', $post->ID);
+				 		                                        	$urlFoto = $urlFoto[0]['foto'];
+				 		                                        	$urlFoto = wp_get_attachment_image_src( $urlFoto, 'tb-lista' );
+
+				 		                                        	$urlZoom = (get_field('zoom', $post->ID)) ? wp_get_attachment_image_src( get_field('zoom', $post->ID), 'tb-lista' ) : $urlFoto;
+				 		                                        	$temZoom = (get_field('zoom', $post->ID)) ? 'foto' : '0';
+				 		                                        ?>
+				 	                                            <img id="<?php echo $temZoom ?>" class="foto animado-02-in-out" src="<?php echo $urlFoto[0] ?>" width="<?php echo $urlFoto[1] ?>" height="<?php echo $urlFoto[2] ?>">
+				 	                                            <img id="zoom" src="<?php echo $urlZoom[0] ?>" width="<?php echo $urlZoom[1] ?>" height="<?php echo $urlZoom[2] ?>">
+				 		                                        
+				 	                                        </div>
+				 	                                        <?php 
+
+
+				 	                                        	$desconto = split("%", get_post_meta($post->ID, 'desconto_promocao', true) );
+				 	                                        	$dataLimiteDesconto = get_post_meta($post->ID, 'data_limite_promocao', true);
+				 	                                        	$dataLimiteDesconto =  strtotime($dataLimiteDesconto);
+				 	                                        	$dataLimiteDesconto = date('d/m/Y', $dataLimiteDesconto);
+				 	                                        	$desconto = $desconto[0];
+
+				 	                                        	$dataLimite = strtotime (get_post_meta($post->ID, 'data_limite_promocao', true));
+
+				 	                                        	if (strtotime('now') <= $dataLimite && $desconto != '0') : 
+				 												
+
+				 	                                         ?>
+
+				 		                                        <div id="desconto" title="promoção válida até <?php echo $dataLimiteDesconto ?>">
+				 		                                            <p><?php echo $desconto; ?>%</p>
+				 		                                        </div>
+
+				 		                                    <?php endif ?>
+
+				 	                                        <div id="carrinho" title="Você já tem esse produto no carrinho"></div>
+
+				 	                                        <?php if (get_post_meta($post->ID, 'novidade', true)) : ?>
+				 	                                        	<div id="new"></div>
+				 		                                    <?php endif ?>
+
+				 	                                        <?php 
+				 	                                        	$preco =  get_post_meta($post->ID, 'preco', true);
+				 	                                        	$preco = split(',', $preco);
+				 	                                        	$preco = '<span>' . $preco[0] . '</span>,' . $preco[1];
+				 	                                        ?>
+				 	                                        <div id="preco" class="animado-02-in-out"><p>R$ <?php echo $preco ?></p></div>
+				 	                                        <!-- <div id="preco" class="animado-02-in-out"><p>R$ <span>1.560</span>,00</p></div> -->
+				 	                                        <div id="menu" class="animado-02-in-out">
+				 	                                            <ul>
+				 	                                                <li><a id="btn-ver" href="<?php echo get_permalink($post->ID) ?>" title="Ver produto">Ver produto</a></li>
+				 	                                                <li><button id="btn-add" class="btn-add" title="Adicionar ao carrinho">Adicionar ao Carrinho</button></li>
+				 	                                                <li><button id="btn-compartilhar" class="btn-compartilhar" title="Compartilhar">Compartilhar</button></li>
+				 	                                            </ul>
+				 	                                        </div>
+				 	                                    </figure>
+				 	                                    <div id="descricao">
+				 	                                        <h2><?php the_title() ?></h2>
+				 	                                        <?php 
+
+				 	                                        	$fullDescricao = get_post_meta($post->ID, 'descricao', true);
+				 	                                        	$descricao = $fullDescricao;
+				 	                                        	if (strlen(strip_tags($descricao)) > 30) :
+
+				 	                                        		$descricao = substr(strip_tags ($descricao), 0, 30) . "...";
+
+				                                         		endif;
+
+				 	                                         ?>
+				 	                                        <p data-full="<?php echo $fullDescricao; ?>"><?php echo $descricao ?></p>
+				 	                                    </div>
+
+				 	                                </li>
+
+												<?php 
+
+
+												endwhile;
+
+											 ?>
+<!-- 										    <li id="produto" class="produto">
 
 										        <figure class="foto-produto">
 										            <div id="wrap-imgs">
@@ -241,21 +349,28 @@
 										        </div>
 
 										    </li>
+ -->
 
-										<?php endfor; ?>
 
+										</ul>
 
-									</ul>
+									</div>
+
+									<div class="span1">
+										<button id="btn-proximo">Próximos</button>
+									</div>
 
 								</div>
 
-								<div class="span1">
-									<button id="btn-proximo">Próximos</button>
-								</div>
+							</section>
 
-							</div>
+							<?php 
 
-						</section>
+						endif;
+
+						wp_reset_postdata();
+
+						?>
 
 					</div>
 

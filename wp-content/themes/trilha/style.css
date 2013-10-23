@@ -742,6 +742,7 @@ body #trilha #header
 #trilha #bg-base.loja ul li a:hover,
 #trilha #bg-base.loja ul li a:focus
 {
+    text-decoration: none;
     color: white;
 }
 
@@ -1405,6 +1406,22 @@ body #trilha #header
     text-align: center;
 }
 
+#carousel .carousel-control
+{
+    top: 50%;
+    width: 53px;
+    height: 53px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: none;
+}
+
+#carousel .carousel-control img
+{
+    margin-top: 8px;
+}
+
 #carousel #textos-carousel,
 #carousel #imagens-carousel
 {
@@ -1427,7 +1444,7 @@ body #trilha #header
     text-align: left;
 }
 
-#carousel #textos-carousel #descricao
+#carousel #textos-carousel #descricao p
 {
     font-family: Arial;
     font-size: 13px;
@@ -1443,11 +1460,12 @@ body #trilha #header
     margin-top: 38%;
     text-align: right;
 }
+
 #carousel #textos-carousel #preco span
 {
     font-size: 60px;
     display: inline-block;
-    vertical-align: -67%;
+    vertical-align: -39%;
 }
 
 #carousel #imagens-carousel
@@ -1537,7 +1555,8 @@ body #trilha #header
     padding: 8px 5px 5px;
 }
 
-#paginacao ul .numeracao:hover
+#paginacao ul .numeracao:hover,
+#paginacao ul .atual
 {
     background-position: center bottom;
     color: white;
@@ -1619,6 +1638,20 @@ body #trilha #header
 {
     list-style: none;
     margin: 10px auto 20px;
+}
+
+#lista-produtos #msg-busca
+{
+    font-family: "covered", cursive !important;
+    font-size: 22px;
+    margin: 30px 0 40px;
+    text-align: left;
+}
+
+#lista-produtos #msg-busca span
+{
+    color: #B60000;
+    font-size: 30px;
 }
 
 .produto
@@ -1861,6 +1894,7 @@ body #trilha #header
     width: 459px;
     height: 440px;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 #ver-produto #infos-produto .foto-produto ul,
@@ -2416,6 +2450,21 @@ body #trilha #header
 
 
 
+
+#alerts
+{
+    position: fixed;
+    width: 96%;
+    bottom: 0;
+    z-index: 1300;
+    padding: 20px 2% 0;
+    pointer-events: none;
+}
+
+#alerts .alert
+{
+    display: none;
+}
 
 #sharebar
 {

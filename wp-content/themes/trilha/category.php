@@ -37,11 +37,12 @@
 	                            		$img = wp_get_attachment_image_src($img, 'foto-destaque');
 	                            		$zoom = get_field('zoom', $dId);
 	                            		$zoom = wp_get_attachment_image_src($zoom, 'zoom-destaque');
+	                            		$url = get_permalink($dId);
 
 
 	                            ?>
 	                                <div class="item">
-	                                    <a href="#">
+	                                    <a href="<?php echo $url ?>">
 	                                        <div id="textos-carousel">
 	                                            <h2><?php echo $nome ?></h2>
 	                                            <div id="descricao"><?php echo $descricao ?></div>
@@ -71,10 +72,52 @@
 	                </div>           
 	            </div>
 	            
-	            <div id="bg-marcadores" class="fluid-container"></div>
+	            <div id="bg-marcadores" class="fluid-container">
+	            </div>
 
 
 
+	            <?php 
+
+	        		$ppp = ( isset($_GET['ip']) ) ? $_GET['ip'] : 10;
+            		$cat = single_cat_title( '', false );
+            		$search = ( isset( $_GET['q'] ) ) ? $_GET['q'] : '';
+
+            		if ( get_query_var('paged') ) : 
+	            		$paged = get_query_var('paged');
+	            	endif;
+
+            		if ( get_query_var('page') ) : 
+	            		$paged = get_query_var('page');
+	            	endif;
+
+	            	$offset = $ppp * ( max( intval( $_GET['pg'] ), 1 ) - 1 );
+
+	            	//descobre a quantidade de posts com a query search
+	            	if( $search != '' || $cat != 'Loja' ) :
+
+	            		$args = array( 'post_type' => 'produto', 'offset' => $offset, 'posts_per_page' => -1, 'category_name' => $cat, 'paged' => $paged, 's' => $search );
+	            		$loop = new WP_Query( $args );
+	            		$totalPosts = $loop->post_count;
+
+            		endif;
+
+            		$args = array( 'post_type' => 'produto', 'offset' => $offset, 'posts_per_page' => $ppp, 'category_name' => $cat, 'paged' => $paged, 's' => $search );
+            		$loop = new WP_Query( $args );
+
+            		$totalPosts = ( isset( $totalPosts ) ) ? $totalPosts : wp_count_posts('produto')->publish;
+
+            		$msgSearch = '';
+            		if ( $search != '' ) :
+
+	            		$msgSearch = '<span>' . $totalPosts . '</span> ' . pluralize($totalPosts, 'produtos', 'produto') . ' na busca por <span>"' . $search . '"</span>';
+	            		$msgSearch .= ( $cat != 'Loja' ) ? ' dentro da categoria <span>' . $cat : '</span>';
+
+	            	endif;
+
+            		$nPages = ceil($totalPosts / $ppp);
+
+				?>
 	            <?php 
 
 	                $pUrl = realpath(dirname(__FILE__));
@@ -82,11 +125,7 @@
 	                $pUrl = $pUrl[0];
 	                include $pUrl . "\paginacao.php";
 
-	             ?>
-
-
-
-
+	            ?>
 
 	             <section>
 
@@ -95,9 +134,10 @@
 	                    <ul>
 	                        <div class="fluid-row">
 
+	                        	<p id="msg-busca"><?php echo $msgSearch ?></p>
+
                             	<?php 
-	                            			//Produtos
-	                            		$loop = new WP_Query( array( 'post_type' => 'produto', 'posts_per_page' => 10 ) );
+                        			//Produtos
 	                            	while ( $loop->have_posts() ) : $loop->the_post();
 	                            ?>
 
@@ -107,19 +147,20 @@
 	                                    <figure class="foto-produto">
 	                                        <div id="wrap-imgs">
 		                                        <?php 
-		                                        	$urlFoto = get_field('fotos', $post->ID); 
+		                                        	$urlFoto = get_field('fotos', $post->ID);
 		                                        	$urlFoto = $urlFoto[0]['foto'];
 		                                        	$urlFoto = wp_get_attachment_image_src( $urlFoto, 'tb-lista' );
 
 		                                        	$urlZoom = (get_field('zoom', $post->ID)) ? wp_get_attachment_image_src( get_field('zoom', $post->ID), 'tb-lista' ) : $urlFoto;
 		                                        	$temZoom = (get_field('zoom', $post->ID)) ? 'foto' : '0';
 		                                        ?>
+	                                    <a href="<?php echo get_permalink($post->ID) ?>">
 	                                            <img id="<?php echo $temZoom ?>" class="foto animado-02-in-out" src="<?php echo $urlFoto[0] ?>" width="<?php echo $urlFoto[1] ?>" height="<?php echo $urlFoto[2] ?>">
 	                                            <img id="zoom" src="<?php echo $urlZoom[0] ?>" width="<?php echo $urlZoom[1] ?>" height="<?php echo $urlZoom[2] ?>">
+	                                    </a>
 		                                        
 	                                        </div>
 	                                        <?php 
-
 
 	                                        	$desconto = split("%", get_post_meta($post->ID, 'desconto_promocao', true) );
 	                                        	$dataLimiteDesconto = get_post_meta($post->ID, 'data_limite_promocao', true);
@@ -179,7 +220,10 @@
 
 	                                </li>
 
-	                            <?php endwhile; ?>
+	                            <?php
+	                            	endwhile; 
+	                            	wp_reset_postdata();
+	                            ?>
 
 	                        </div>
 
