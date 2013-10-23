@@ -17,44 +17,98 @@
 
         </div>
 
-        <div class="row-fluid">
-            <div id="wrap-finalizar" class="span10 offset1">
+        <div id="row-form" class="row-fluid">
+                <div id="wrap-finalizar" class="span10 offset1">
 
-                <div id="wrap-opcao-cadastro">
-                    <label id="lbl-sou-cadastrado-login" for="sou-cadastrado-login">
-                        <input id="sou-cadastrado-login" type="radio" name="cadastro" value="sou-cadastrado">
-                    </label>
-                    
-                    <label id="lbl-fazer-cadastro-login" for="sou-cadastrado-login">
-                        <input id="fazer-cadastro-login" type="radio" name="cadastro" value="fazer-cadastro">
-                    </label>
+                    <div id="wrap-sou-cadastrado">
+                        <div id="wrap-opcao-cadastro">
+                            <label id="lbl-sou-cadastrado" for="sou-cadastrado">
+                                <input id="sou-cadastrado" type="radio" name="cadastro" value="sou-cadastrado">
+                            </label>
+                            
+                            <label id="lbl-fazer-cadastro" for="fazer-cadastro">
+                                <input id="fazer-cadastro" type="radio" name="cadastro" value="fazer-cadastro">
+                            </label>
 
-                    <span><p>ou</p></span>
+                            <span><p>ou</p></span>
+                        </div>
+
+                        <form>
+                                <label id="label-login" class="control-label" for="input-login">Login</label> <br>
+                                <input type="text" id="input-login" class="input-small">  <br>
+
+                                <label class="control-label" for="input-password">Senha</label> <br>
+                                <input type="password" id="input-password" class="input-small">
+
+
+                            <input class="submit-seta" type="submit" value="ok">
+                        </form>
+                    </div>
+
+
+
+                    <div id="wrap-cadastrar">
+                        <div id="wrap-opcao-cadastro">
+                            <label id="lbl-sou-cadastrado" for="sou-cadastrado">
+                                <input id="sou-cadastrado" type="radio" name="cadastro" value="sou-cadastrado">
+                            </label>
+                            
+                            <label id="lbl-fazer-cadastro" for="fazer-cadastro">
+                                <input id="fazer-cadastro" type="radio" name="cadastro" value="fazer-cadastro">
+                            </label>
+
+                            <span><p>ou</p></span>
+                        </div>
+
+                        <form id="form-cadastrar" class="form-horizontal">
+                                <div id="control-nome" class="control-group">
+                                    <label class="control-label" for="input-nome">Nome</label>
+                                    <div class="controls">
+                                        <input type="text" id="input-nome" class="input-small">
+                                    </div>
+                                </div>
+
+                                <div id="control-email" class="control-group">
+                                    <label class="control-label" for="input-email">E-mail</label>
+                                    <div class="controls">
+                                        <input type="text" id="input-email" class="input-small">
+                                    </div>
+                                </div>
+                   
+                                <div id="control-cpf" class="control-group">
+                                    <label class="control-label" for="input-cpf">CPF</label>
+                                    <div class="controls">
+                                        <input type="text" id="input-cpf" class="input-small">
+                                    </div>
+                                </div>
+                   
+                                <div id="control-cep" class="control-group">
+                                    <label class="control-label" for="input-cep">CEP</label>
+                                    <div class="controls">
+                                        <input type="text" id="input-cep" class="input-small">
+                                    </div>
+                                </div>
+
+
+                                <div class="clearfix"></div>
+                            <input class="submit-enviar" type="submit" value="ok">
+                        </form>
+                    </div>    
+
+
+                 </div>  
+
+            <div class="row-fluid">
+                <div id="rodape-finalizar" class="span10 offset1">
+                    <ul>
+                        <li><a href="#">Esqueci meu login</a></li>
+                        <li><a href="#">Esqueci minha senha</a></li>
+                    </ul>
                 </div>
-
-                <form>
-                        <label id="label-login" class="control-label" for="input-login">Login</label> <br>
-                        <input type="text" id="input-login" class="input-small">  <br>
-
-                        <label class="control-label" for="input-password">Senha</label> <br>
-                        <input type="password" id="input-password" class="input-small">
-
-
-                    <input class="submit-seta" type="submit" value="ok">
-                </form>
-
-
-             </div>  
+            </div>
+        
         </div>  
 
-        <div class="row-fluid">
-            <div id="rodape-finalizar" class="span10 offset1">
-                <ul>
-                    <li><a href="#">Esqueci meu login</a></li>
-                    <li><a href="#">Esqueci minha senha</a></li>
-                </ul>
-            </div>
-        </div>
 
     </div>
 </section>

@@ -468,7 +468,14 @@ h1, h2, h3, h4, h5, h6
 
 
 
-
+.submit-enviar
+{
+    background: url(img/trilha-btn-enviar.png) no-repeat center;
+    border: none;
+    text-indent: -9999px;
+    padding: 18px 46px;
+    display: block !important;
+}
 
 
 
@@ -2509,6 +2516,11 @@ body #trilha #header
     text-align: center;
 }
 
+#institucional #conteudo #row-form
+{
+    padding-bottom: 200px;
+}
+
 #institucional #conteudo #wrap-finalizar #wrap-opcao-cadastro span
 {
     width: 50px;
@@ -2531,13 +2543,13 @@ body #trilha #header
     margin-top: 5px;
 }
 
-#institucional #conteudo #wrap-finalizar #sou-cadastrado-login,
-#institucional #conteudo #wrap-finalizar #fazer-cadastro-login
+#institucional #conteudo #wrap-finalizar #sou-cadastrado,
+#institucional #conteudo #wrap-finalizar #fazer-cadastro
 {
     display: none;
 }
 
-#institucional #conteudo #wrap-finalizar #lbl-sou-cadastrado-login
+#institucional #conteudo #wrap-finalizar #lbl-sou-cadastrado
 {
     width: 226px;
     height: 236px;
@@ -2546,7 +2558,7 @@ body #trilha #header
     background: url(img/trilha-identificacao-sou-cadastrado-login.png) center;
 }
 
-#institucional #conteudo #wrap-finalizar #lbl-fazer-cadastro-login
+#institucional #conteudo #wrap-finalizar #lbl-fazer-cadastro
 {
     width: 226px;
     height: 236px;
@@ -2565,7 +2577,10 @@ body #trilha #header
     width: 210px;
     display: inline-block;
     text-align: left;
+    color: #666666;
+    font-size: 13px !important;
 }
+
 
 /*#institucional #conteudo #wrap-finalizar form #label-login
 {
@@ -2601,7 +2616,6 @@ body #trilha #header
     color: #004990;
     font-size: 11px;
     text-align: center;
-    margin-bottom: 200px;
 }
 
 #institucional #conteudo #rodape-finalizar ul
@@ -2617,3 +2631,102 @@ body #trilha #header
 {
     text-decoration: none;
 }
+
+
+
+
+
+
+#institucional #conteudo #wrap-finalizar #wrap-sou-cadastrado,
+#institucional #conteudo #rodape-finalizar
+{
+    display: none;
+}
+
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar
+{
+    /*display: none;*/
+}
+
+
+
+
+
+
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar #lbl-sou-cadastrado
+{
+    background: url(img/trilha-identificacao-sou-cadastrado-cadastrar.png) center;
+}
+
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar #lbl-fazer-cadastro
+{
+    width: 220px;
+    height: 236px;
+    margin-left: -7px;
+    background: url(img/trilha-identificacao-fazer-cadastro-cadastrar.png) center;
+}
+
+
+
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar form
+{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar form input
+{
+    height: 27px;
+    box-shadow: 0 2px 5px #e8e8e8;
+    color: #003b75;
+    font-weight: bold;
+    font-size: 11px;
+    display: inline-block;
+    float: left;
+}
+
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar form input[type="submit"]
+{
+    margin: 45px auto 50px auto;
+    float: none;
+}
+
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar #form-cadastrar .control-group
+{
+    display: inline-block;
+    float: left;
+    margin-right: 40px;
+}
+
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar #form-cadastrar .control-label,
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar #form-cadastrar .controls
+{
+    display: block;
+    float: left;
+    margin-left: 0;
+}
+
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar #form-cadastrar #control-nome,
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar #form-cadastrar #input-nome
+{
+    width: 190px;
+}
+
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar #form-cadastrar #control-email,
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar #form-cadastrar #input-email
+{
+    width: 200px;
+}
+
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar #form-cadastrar #control-cpf,
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar #form-cadastrar #input-cpf
+{
+    width: 149px;
+}
+
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar #form-cadastrar #control-cep,
+#institucional #conteudo #wrap-finalizar #wrap-cadastrar #form-cadastrar #input-cep
+{
+    width: 121px;
+}
+
